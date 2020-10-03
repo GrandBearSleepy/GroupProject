@@ -11,6 +11,15 @@ function holiday () {
     method: "GET"
   }).then(function (response) {
     console.log(response)
-})}
+
+    // Holiday name:
+    var holidayName = (response.response.holidays[0].name);
+    console.log(holidayName)
+
+    // description of holiday
+    var holidayDesc = (response.response.holidays[0].description);
+    console.log(holidayDesc)
+  })}
 
 holiday()
+
