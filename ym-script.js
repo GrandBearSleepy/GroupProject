@@ -1,48 +1,94 @@
+// runs when document loads
+$(document).ready(function () {
+  $('select').formSelect();
+  $("select[required]").css({
+    display: "inline",
+    height: 0,
+    padding: 0,
+    width: 0
+  });
+  $('.datepicker').datepicker({
+    selectMonths: true,
+  });
+  myTimer();
+  countryList();
+  // holiday();
+});
+
 var apiKey = "1da6b12f081b6014f18ea9f7c1ea494e31deb443";
 var searchTerm = "" //this will need to be defined as search criteria
 var holidayType = "National" //This will be selected based on drop down, need to determine who to include multiple
 var year = "2020"
 
 
-function holiday () {
-  var queryURL = "https://calendarific.com/api/v2/holidays?api_key=" + apiKey + "&country=AU&year=2019&type=" + holidayType
+// create clock to display current time
+var myVar = setInterval(myTimer, 1000);
+function myTimer() {
+  var d = new Date();
+  var t = d.toString();
+  t = t.substring(0, t.indexOf('('));
+  $("#currentDandT").html(t);
+}
+
+
+// When search submitted
+
+$("#submitButton").click(function () {
+  var selectedCountriesEl = $('#countrySelector').find(":selected").map(function () { return this.value; }).get().join().split(",");
+  var holidayType = $('#typeHoliday').find(":selected").map(function () { return this.value; }).get().join()
+  var selectedDate = $(".datepicker").val();
+  var date = new Date(selectedDate);
+  var year = date.getFullYear();
+  var month = date.getMonth()+1;
+  var day = date.getDate();
+
+  $.each(selectedCountriesEl, function (index, value) {
+    var countryCodeEl = value;
+    var queryURL = "https://calendarific.com/api/v2/holidays?api_key=" + apiKey + "&country=" + countryCodeEl + "&year="+year+"&month="+month+"&day="+day+"&type=" + holidayType;
+      console.log(queryURL);
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function (output) {
+      var countryEl = output.response.holidays[0].country.name;
+      var cardHorId = "id=cardHor" + countryCodeEl;
+      var cardHorizontal = "<div class=card>" ;
+      var cardStacked = "<div class=card-stacked>";
+      var cardStackedIdEl = "<div class=card-stacked "  + cardHorId + ">";
+      var cardContent = "<div class=card-content>";
+      var closeDivHCard = "</div></div>";
+      var cardHorTemplate = cardHorizontal + cardStacked + cardContent + "<h4>" + countryEl + "</h4>" + closeDivHCard + cardStackedIdEl
+      
+      $("#resultsBox").append(cardHorTemplate);
+      $('div.card').addClass("horizontal");
+      $.each(output.response.holidays, function (index, value) {
+        console.log(this.name);
+        var closeDivCard = "</div></div></div>";
+        var cardTemplate =  cardContent + "<p>"+this.name+"</p>"+"<br/>"+"<p>"+this.date.iso+"</p>"+"<br/>"+closeDivCard
+
+        console.log(cardTemplate);
+        $("#cardHor"+countryCodeEl).append(cardTemplate);
+      })
+    })
+  })
+});
+
+
+// Create country list drop down 
+function countryList() {
+  var queryURL = "https://calendarific.com/api/v2/countries?api_key=" + apiKey
 
   $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function (response) {
-    console.log(response)
+    console.log(response);
+    $.each(response.response.countries, function (index, value) {
 
+      // console.log(this["iso-3166"], this.country_name);
+      $("#countrySelector").append(new Option(this.country_name, this["iso-3166"]));
 
-    // Country name:
-    // var countryName = (response.response.holiday[0])
-
-    // Holiday name:
-    var holidayName = (response.response.holidays[3].name);
-    console.log(holidayName)
-
-    // description of holiday
-    var holidayDesc = (response.response.holidays[3].description);
-    console.log(holidayDesc)
-
-    // holiday type - returned from what was 
-    holidayType = (response.response.holidays[3].type[0])
-    console.log(holidayType)
-
-
-  })}
-
-holiday()
-
-function countryList () {
-var queryURL = "https://calendarific.com/api/v2/countries?api_key=" + apiKey
-
-$.ajax({
-  url: queryURL,
-  method: "GET"
-}).then(function (response) {
-  console.log(response.response.countries.country_name)
-
-})}
-
-countryList()
+    })
+    $('#countrySelector').formSelect();
+  })
+};
