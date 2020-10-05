@@ -45,18 +45,50 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col s8" id="resultsBox">
-           
+           <div class= "white" id= "userguide"></div>
+            <div class="row">
+            <div class="col s12 m7">
+              <div class="card">
+                <div class="card-image">
+                  <img src="./Assets/PublicHoliday.jpg" alt="calendar holiday circled" style="width:425px;height:282px;"> 
+                  
+                </div>
+                <div class="card-content">
+                  <span class="card-title">Welcome!</span>
+                  <p>I am a very simple card. I am good at containing small bits of information.
+                  I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                  <a href="#">This is a link</a>
+                </div>
+              </div>
+            </div>
+             
+
+           </div>
           </div>
 
           <div class="col s4">
             <form>
 
-              <label>Select Countries</label>
+              <!-- <label>Select Countries</label>
               <div class="input-field">
                 <select id="countrySelector" required=true multiple>
                 </select><br />
+              </div> -->
+              <label>Select States</label>
+              <div class="input-field">
+                <select class="select_all" id="stateselector" required=true multiple>
+                  <option class="Australia/Sydney" value="ACT">Australian Capital Territory</option>
+                  <option class="Australia/Sydney" value="NSW">New South Wales</option>
+                  <option class="Australia/Darwin" value="NT">Northern Teritory</option>
+                  <option class="Australia/Brisbane" value="QLD">Queensland</option>
+                  <option class="Australia/Adelaide" value="SA">South Australia</option>
+                  <option class="Australia/Hobart" value="TAS">Tasmania</option>
+                  <option class="Australia/Melbourne" value="VIC">Victoria</option>
+                  <option class="Australia/Perth" value="WA">Western Australia</option>
+                </select><br />
               </div>
-
               <label>Holiday Type</label>
               <div class="input-field">
                 <select id="typeHoliday" required=true multiple>

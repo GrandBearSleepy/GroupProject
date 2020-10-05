@@ -11,9 +11,21 @@ $(document).ready(function () {
     selectMonths: true,
   });
   myTimer();
-  countryList();
+  // countryList();
   // holiday();
+  $('select.select_all').siblings('ul').prepend('<li id=sm_select_all><span>Select All</span></li>');
+    $('li#sm_select_all').on('click', function () {
+      var jq_elem = $(this), 
+          jq_elem_span = jq_elem.find('span'),
+          select_all = jq_elem_span.text() == 'Select All',
+          set_text = select_all ? 'Select None' : 'Select All';
+      jq_elem_span.text(set_text);
+      jq_elem.siblings('li').filter(function() {
+        return $(this).find('input').prop('checked') != select_all;
+      }).click();
+    });
 });
+ $('select.select_all').siblings('ul').prepend('<li id=sm_select_all><span>Select All</span></li>');
 
 var apiKey = "7d54d178cff682b4d8985e43a6b6c9055e8cef71";
 var searchTerm = "" //this will need to be defined as search criteria
@@ -21,6 +33,7 @@ var holidayType = "National" //This will be selected based on drop down, need to
 var year = "2020"
 
 
+$("#stateSelector").append(states);
 // create clock to display current time
 var myVar = setInterval(myTimer, 1000);
 function myTimer() {
@@ -34,7 +47,7 @@ function myTimer() {
 // When search submitted
 
 $("#submitButton").click(function () {
-  var selectedCountriesEl = $('#countrySelector').find(":selected").map(function () { return this.value; }).get().join().split(",");
+  var selectedCountriesEl = $('#countrySelector').find(":selected").map(function () { return this.value; }).get().join().split(",").sort();
   var holidayType = $('#typeHoliday').find(":selected").map(function () { return this.value; }).get().join()
   var selectedDate = $(".datepicker").val();
   var date = new Date(selectedDate);
@@ -49,7 +62,7 @@ $("#submitButton").click(function () {
 
   $.each(selectedCountriesEl, function (index, value) {
     var countryCodeEl = value;
-    var queryURL = "https://calendarific.com/api/v2/holidays?api_key=" + apiKey + "&country=" + countryCodeEl + "&year="+year+"&month="+month+"&day="+day+"&type=" + holidayType;
+    var queryURL = "https://calendarific.com/api/v2/holidays?api_key=" + apiKey + "&country=AU&year="+year+"&month="+month+"&day="+day+"&type=" + holidayType;
       console.log(queryURL);
     $.ajax({
       url: queryURL,
