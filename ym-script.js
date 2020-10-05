@@ -15,7 +15,7 @@ $(document).ready(function () {
   // holiday();
 });
 
-var apiKey = "1da6b12f081b6014f18ea9f7c1ea494e31deb443";
+var apiKey = "7d54d178cff682b4d8985e43a6b6c9055e8cef71";
 var searchTerm = "" //this will need to be defined as search criteria
 var holidayType = "National" //This will be selected based on drop down, need to determine who to include multiple
 var year = "2020"
