@@ -42,6 +42,9 @@ $("#submitButton").click(function () {
   var month = date.getMonth()+1;
   var day = date.getDate();
 
+  // Empty all Divs
+  $("#resultsBox").empty();
+
   console.log(date);
 
   $.each(selectedCountriesEl, function (index, value) {
