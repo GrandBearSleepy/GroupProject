@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+  
+#masterContainer {
+    margin: 40px 60px 40px 10px;
+}
+
+#currentDandT {
+padding-right: 20px;
+}
+
+#resultsBox {
+  
+  background-color: aqua;
+}
+

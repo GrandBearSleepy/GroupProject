@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" /> -->
+
+
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="./style.css" />
+
+
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" /> -->
+
+  <title>Public Holiday Checker</title>
+</head>
+
+<body>
+
+  <header>
+    <!-- Navigation Bar -->
+    <nav>
+      <div class="nav nav-wrapper teal">
+        <a href="#" class="brand-logo center">Public Holiday Checker</a>
+        <div id="currentDandT" class="right hide-on-med-and-down">
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="container-fluid" id="masterContainer">
+
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col s8" id="resultsBox">
+           
+          </div>
+
+          <div class="col s4">
+            <form>
+
+              <label>Select Countries</label>
+              <div class="input-field">
+                <select id="countrySelector" required=true multiple>
+                </select><br />
+              </div>
+
+              <label>Holiday Type</label>
+              <div class="input-field">
+                <select id="typeHoliday" required=true multiple>
+                  <option value="national">National</option>
+                  <option value="local">Local</option>
+                  <option value="religious">Religious</option>
+                  <option value="observance">Observance</option>
+                </select><br />
+              </div>
+
+
+
+              <div >
+                <label>Select Date</label>
+                <input id="dateSearch" type="text" class="datepicker" required=true>
+              </div><br />
+
+
+              <button id="submitButton" class="btn waves-effect waves-light" type="button" name="action" >Search
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+
+
+  <!-- Footer -->
+  <footer class="page-footer teal ">
+    <div class="left">© 2020 UWA HEROES</div>
+    </div>
+  </footer>
+
+
+
+
+
+
+
+  <!-- Linking JQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Linking moment js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Linking my script file -->
+  <script src="ym-script.js"></script>
+
+
+
+
+</body>
+
+</html>
