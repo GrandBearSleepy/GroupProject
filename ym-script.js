@@ -42,6 +42,8 @@ $("#submitButton").click(function () {
   var month = date.getMonth()+1;
   var day = date.getDate();
 
+  console.log(date);
+
   $.each(selectedCountriesEl, function (index, value) {
     var countryCodeEl = value;
     var queryURL = "https://calendarific.com/api/v2/holidays?api_key=" + apiKey + "&country=" + countryCodeEl + "&year="+year+"&month="+month+"&day="+day+"&type=" + holidayType;
@@ -50,6 +52,7 @@ $("#submitButton").click(function () {
       url: queryURL,
       method: "GET"
     }).then(function (output) {
+      console.log(output);
       var countryEl = output.response.holidays[0].country.name;
       var cardHorId = "id=cardHor" + countryCodeEl;
       var cardHorizontal = "<div class=card>" ;
