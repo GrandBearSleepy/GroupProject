@@ -27,10 +27,11 @@ $(document).ready(function () {
 });
  $('select.select_all').siblings('ul').prepend('<li id=sm_select_all><span>Select All</span></li>');
 
-var apiKey = "7d54d178cff682b4d8985e43a6b6c9055e8cef71";
+var apiKey1 = "7d54d178cff682b4d8985e43a6b6c9055e8cef71";
 var searchTerm = "" //this will need to be defined as search criteria
 var holidayType = "National" //This will be selected based on drop down, need to determine who to include multiple
 var year = "2020"
+
 
 
 $("#stateSelector").append(states);
@@ -62,7 +63,7 @@ $("#submitButton").click(function () {
 
   $.each(selectedCountriesEl, function (index, value) {
     var countryCodeEl = value;
-    var queryURL = "https://calendarific.com/api/v2/holidays?api_key=" + apiKey + "&country=AU&year="+year+"&month="+month+"&day="+day+"&type=" + holidayType;
+    var queryURL = "https://calendarific.com/api/v2/holidays?api_key=" + apiKey1 + "&country=AU&year="+year+"&month="+month+"&day="+day+"&type=" + holidayType;
       console.log(queryURL);
     $.ajax({
       url: queryURL,
@@ -92,10 +93,23 @@ $("#submitButton").click(function () {
   })
 });
 
+// API call details for Timezones -------------------------------//
+var apiKey2 = "G5S20ISM8DXY"
+var statesSelected = "" //this will need to be defined from what is selected on screen
+var queryURLTime = "https://api.timezonedb.com/v2.1/list-time-zone?key=" + apiKey2 + "&format=json&country=AU"
+console.log(queryURLTime)
+
+$.ajax({
+  url: queryURLTime,
+  method: "GET"
+}).then(function (response) {
+  console.log(response);
+})
+// --------------------------------------------------------------//
 
 // Create country list drop down 
 function countryList() {
-  var queryURL = "https://calendarific.com/api/v2/countries?api_key=" + apiKey
+  var queryURL = "https://calendarific.com/api/v2/countries?api_key=" + apiKey + "&format=json"
 
   $.ajax({
     url: queryURL,
