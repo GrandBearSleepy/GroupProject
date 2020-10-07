@@ -30,7 +30,7 @@ var apiKey1 = "7d54d178cff682b4d8985e43a6b6c9055e8cef71";
 var searchTerm = "" //this will need to be defined as search criteria
 var holidayType = "National" //This will be selected based on drop down, need to determine who to include multiple
 var year = "2020"
-
+var states = "";
 
 
 
@@ -48,9 +48,12 @@ function myTimer() {
 
 $("#submitButton").click(function () {
 
+
+
   var selectedStateEl = $('#stateSelector').find(":selected").map(function () { return this.text; }).get().join().split(",")
   var statesSortedEl = selectedStateEl.sort();
   console.log(statesSortedEl);
+
   var holidayType = $('#typeHoliday').find(":selected").map(function () { return this.value; }).get().join()
   var selectedDate = $(".datepicker").val().split("-");
   var selectedMonth = selectedDate[1].replace(/^0+/, '');
@@ -60,6 +63,7 @@ $("#submitButton").click(function () {
 
   // Empty all Divs
   $("#resultsBox").empty();
+
 
   var queryURL = "https://calendarific.com/api/v2/holidays?api_key=" + apiKey1 + "&country=AU&year=" + selectedDate[0] + "&month=" + selectedMonth + "&type=" + holidayType;
   console.log(queryURL);
@@ -77,6 +81,7 @@ $("#submitButton").click(function () {
       var cardHorId = "id=cardHor" + statestripped;
       var statevalue = statestripped;
       var cardHorizontal = "<div class=card>";
+
       var cardStacked = "<div class=card-stacked>";
       var cardStackedIdEl = "<div class=card-stacked " + cardHorId + ">";
       var cardContent = "<div class=card-content>";
@@ -88,9 +93,9 @@ $("#submitButton").click(function () {
 
       //For Each holiday returned
       $.each(output.response.holidays, function (index, value) {
-        console.log(this);
-        console.log(this.states);
-        
+
+    
+
         var closeDivCard = "</div></div></div>";
         var cardTemplate = cardContent + "<p>" + this.name + "</p>" + "<br/>" + "<p>" + this.date.iso + "</p>" + "<br/>" + closeDivCard
         var holidayStateEl = this.states;
@@ -116,6 +121,26 @@ $("#submitButton").click(function () {
       })
     })
   })
+
+});
+
+// API call details for Timezones -------------------------------//
+var apiKey2 = "G5S20ISM8DXY"
+var statesSelected = "" //this will need to be defined from what is selected on screen
+var queryURLTime = "https://api.timezonedb.com/v2.1/list-time-zone?key=" + apiKey2 + "&format=json&zone=Australia/Sydney"
+
+console.log(queryURLTime)
+
+$.ajax({
+  url: queryURLTime,
+  method: "GET"
+}).then(function (response) {
+  console.log(response);
+  var time = (response.zones[0].timestamp * 1000);
+  var currentTime = moment.utc(time).format("hh:mm:ss a")
+  console.log(currentTime)
+
+
 })
 
   // API call details for Timezones -------------------------------//
@@ -132,21 +157,4 @@ $("#submitButton").click(function () {
   })
   // --------------------------------------------------------------//
 
-  // Create country list drop down 
-  function countryList() {
-    var queryURL = "https://calendarific.com/api/v2/countries?api_key=" + apiKey + "&format=json"
 
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function (response) {
-      console.log(response);
-      $.each(response.response.countries, function (index, value) {
-
-        // console.log(this["iso-3166"], this.country_name);
-        $("#countrySelector").append(new Option(this.country_name, this["iso-3166"]));
-
-      })
-      $('#countrySelector').formSelect();
-    })
-  };
