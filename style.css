@@ -21,3 +21,38 @@ padding-right: 20px;
   background-color: aqua;
 }
 
+.picker__frame {
+    margin: 0 auto;
+    max-width: 565px;
+  }
+  
+  .picker__date-display {
+    text-align: center;
+    background-color: #26a69a;
+    color: #fff;
+    padding-bottom: 15px;
+    font-weight: 300;
+    float: left;
+    width: 50%;
+    height: 330PX;
+  }
+  
+  .picker__calendar-container {
+    padding: 0 1rem;
+    float: left;
+    width: 50%;
+  }
+  
+  .picker__footer {
+    text-align: right;
+    padding: 5px 10px;
+    clear: both;
+    width: 50%;
+    float: right;
+  }
+  
+  .picker__month-display {
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-top: 55px;
+  }
