@@ -31,7 +31,7 @@ var apiKey1 = "7d54d178cff682b4d8985e43a6b6c9055e8cef71";
 var searchTerm = "" //this will need to be defined as search criteria
 var holidayType = "National" //This will be selected based on drop down, need to determine who to include multiple
 var year = "2020"
-
+var states = "";
 
 
 $("#stateSelector").append(states);
@@ -48,7 +48,7 @@ function myTimer() {
 // When search submitted
 
 $("#submitButton").click(function () {
-  var selectedCountriesEl = $('#countrySelector').find(":selected").map(function () { return this.value; }).get().join().split(",").sort();
+  var states = $('#stateSelector').find(":selected").map(function () { return this.value; }).get().join().split(",").sort();
   var holidayType = $('#typeHoliday').find(":selected").map(function () { return this.value; }).get().join()
   var selectedDate = $(".datepicker").val();
   var date = new Date(selectedDate);
@@ -61,10 +61,10 @@ $("#submitButton").click(function () {
 
   console.log(date);
 
-  $.each(selectedCountriesEl, function (index, value) {
+  $.each(states, function (index, value) {
     var countryCodeEl = value;
     var queryURL = "https://calendarific.com/api/v2/holidays?api_key=" + apiKey1 + "&country=AU&year="+year+"&month="+month+"&day="+day+"&type=" + holidayType;
-      console.log(queryURL);
+      // console.log(queryURL);
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -82,7 +82,7 @@ $("#submitButton").click(function () {
       $("#resultsBox").append(cardHorTemplate);
       $('div.card').addClass("horizontal");
       $.each(output.response.holidays, function (index, value) {
-        console.log(this.name);
+        // console.log(this.name);
         var closeDivCard = "</div></div></div>";
         var cardTemplate =  cardContent + "<p>"+this.name+"</p>"+"<br/>"+"<p>"+this.date.iso+"</p>"+"<br/>"+closeDivCard
 
@@ -96,7 +96,8 @@ $("#submitButton").click(function () {
 // API call details for Timezones -------------------------------//
 var apiKey2 = "G5S20ISM8DXY"
 var statesSelected = "" //this will need to be defined from what is selected on screen
-var queryURLTime = "https://api.timezonedb.com/v2.1/list-time-zone?key=" + apiKey2 + "&format=json&country=AU"
+var queryURLTime = "https://api.timezonedb.com/v2.1/list-time-zone?key=" + apiKey2 + "&format=json&zone=Australia/Sydney"
+
 console.log(queryURLTime)
 
 $.ajax({
@@ -104,6 +105,9 @@ $.ajax({
   method: "GET"
 }).then(function (response) {
   console.log(response);
+  var time = (response.zones[0].timestamp * 1000);
+  var currentTime = moment.utc(time).format("hh:mm:ss a")
+  console.log(currentTime)
 })
 // --------------------------------------------------------------//
 
@@ -124,4 +128,4 @@ function countryList() {
     })
     $('#countrySelector').formSelect();
   })
-};
+}
