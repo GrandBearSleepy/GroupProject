@@ -1,3 +1,8 @@
+html *
+{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
 body {
     display: flex;
     min-height: 100vh;
@@ -6,6 +11,12 @@ body {
 
 main {
     flex: 1 0 auto;
+    background-color: white;
+}
+
+/* nav bar main heading */
+nav .brand-logo {
+  font-size: 3.5vw;
 }
   
 #masterContainer {
@@ -14,6 +25,18 @@ main {
 
 #currentDandT {
 padding-right: 20px;
+}
+
+h4 {
+  font-weight: bold;  
+  font-size: 2vw;
+}
+
+
+/* input field text styling - need tweaking for mobile view*/
+.input-field label {
+  font-size: 1vw;
+  color:black;
 }
 
 #resultsBox {
