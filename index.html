@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" /> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+ <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge" /> -->
+
 
 
   <!--Import Google Icon Font-->
@@ -29,7 +29,7 @@
   <header>
     <!-- Navigation Bar -->
     <nav>
-      <div class="nav nav-wrapper teal">
+      <div class="nav nav-wrapper blue">
         <a href="#" class="brand-logo center">Public Holiday Checker</a>
         <div id="currentDandT" class="right hide-on-med-and-down">
         </div>
@@ -44,13 +44,13 @@
 
       <div class="container-fluid">
         <div class="row">
-          <div class="col s8" id="resultsBox">
+          <div class="col s12 m7 l7" id="resultsBox">
            <div class= "white" id= "userguide"></div>
             <div class="row">
             <div class="col s12 m7">
               <div class="card">
                 <div class="card-image">
-                  <img src="./Assets/PublicHoliday.jpg" alt="calendar holiday circled" style="width:425px;height:282px;"> 
+                  <img class="responsive-img" src="./Assets/PublicHoliday.jpg" alt="calendar holiday circled" style="width:425px;height:282px;"> 
                   
                 </div>
                 <div class="card-content">
@@ -58,9 +58,7 @@
                   <h4>I am a very simple card. I am good at containing small bits of information.</h4>
                   <h4>I am convenient because I require little markup to use effectively.</h4>
                 </div>
-                <div class="card-action">
-                  <a href="#">This is a link</a>
-                </div>
+                
               </div>
             </div>
              
@@ -68,8 +66,8 @@
            </div>
           </div>
 
-          <div class="col s4">
-            <form>
+          <div class="col s5">
+            <form >
 
               <!-- <label>Select Countries</label>
               <div class="input-field">
@@ -92,10 +90,10 @@
               <label>Holiday Type</label>
               <div class="input-field">
                 <select id="typeHoliday" required=true multiple>
-                  <option value="national">National</option>
-                  <option value="local">Local</option>
-                  <option value="religious">Religious</option>
-                  <option value="observance">Observance</option>
+                  <option value="national" data-icon="/Assets/button_icons/national_icon.png" >National</option>
+                  <option value="local" data-icon="/Assets/button_icons/states_icon.jpg">Local</option>
+                  <option value="religious" data-icon="/Assets/button_icons/religion_icon.jpg">Religious</option>
+                  <option value="observance" data-icon="/Assets/button_icons/observance_icon.jpg">Observance</option>
                 </select><br />
               </div>
 
@@ -107,7 +105,7 @@
               </div><br />
 
 
-              <button id="submitButton" class="btn waves-effect waves-light" type="button" name="action" >Search
+              <button id="submitButton" class="btn waves-effect waves-light blue" type="button" name="action" >Search
               </button>
             </form>
           </div>
@@ -121,7 +119,7 @@
 
 
   <!-- Footer -->
-  <footer class="page-footer teal ">
+  <footer class="page-footer blue ">
     <div class="left">© 2020 UWA HEROES</div>
     </div>
   </footer>
