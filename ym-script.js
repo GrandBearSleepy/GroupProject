@@ -1,5 +1,9 @@
-// runs when document loads
+// runs when document 
 $(document).ready(function () {
+
+
+
+
   $('select').formSelect();
   $("select[required]").css({
     display: "inline",
@@ -44,7 +48,12 @@ function myTimer() {
 }
 
 
+
+
+
+
 // When search submitted
+
 
 $("#submitButton").click(function () {
 
@@ -71,7 +80,7 @@ $("#submitButton").click(function () {
     url: queryURL,
     method: "GET"
   }).then(function (output) {
-
+    console.log(output);
     //for each state
     $.each(statesSortedEl, function (index, value) {
       console.log(value);
@@ -91,34 +100,62 @@ $("#submitButton").click(function () {
       $("#resultsBox").append(cardHorTemplate);
       $('div.card').addClass("horizontal");
 
+
+
+
+
+
+
       //For Each holiday returned
       $.each(output.response.holidays, function (index, value) {
 
-    
+
+        //Leon's code start
+
+        //Generate holiday description div
+        var holidayDec = this.description;
+        var holidayType = this.type[0];
+
+        var holidayInfo = "<div class='tooltip hide'>" + "<h5 class='type'>" + holidayType + "</h5>" + "<br/>" + "<p>" + holidayDec + "</p>" + "</div>";
+
+        //End
+
+
+
+
 
         var closeDivCard = "</div></div></div>";
-        var cardTemplate = cardContent + "<p>" + this.name + "</p>" + "<br/>" + "<p>" + this.date.iso + "</p>" + "<br/>" + closeDivCard
+        var cardTemplate = cardContent + "<a class=holiday-name>" + this.name + "</a>" + "<br/>" + "<p>" + this.date.iso + "</p>" + "<br/>" + holidayInfo + closeDivCard;
+        console.log(this.name);
         var holidayStateEl = this.states;
         var outputIsArray = Array.isArray(holidayStateEl);
         console.log(outputIsArray);
         console.log(holidayStateEl);
 
+
         if (holidayStateEl == "All") {
           console.log("this is row 88 = All")
 
-          $("#cardHor" + statevalue).append(cardTemplate)
+          $("#cardHor" + statevalue).append(cardTemplate);
+          //Leon
+          // $("#cardHor" + statevalue).append(holidayDec);
+          //End
         }
         else if (outputIsArray == true) {
           $.each(holidayStateEl, function (index, value) {
-            if (this.name == thisState){
-              $("#cardHor" + statevalue).append(cardTemplate)
+            if (this.name == thisState) {
+              $("#cardHor" + statevalue).append(cardTemplate);
+              // $("#cardHor" + statevalue).append(holidayDec);
             }
 
             console.log(this);
             // ("#cardHor" + holidayStateEl.name).append(cardTemplate)
           })
         }
+
       })
+
+
     })
   })
 
@@ -143,18 +180,57 @@ $.ajax({
 
 })
 
-  // API call details for Timezones -------------------------------//
-  var apiKey2 = "G5S20ISM8DXY"
-  var statesSelected = "" //this will need to be defined from what is selected on screen
-  var queryURLTime = "https://api.timezonedb.com/v2.1/list-time-zone?key=" + apiKey2 + "&format=json&country=AU"
-  console.log(queryURLTime)
+// API call details for Timezones -------------------------------//
+var apiKey2 = "G5S20ISM8DXY"
+var statesSelected = "" //this will need to be defined from what is selected on screen
+var queryURLTime = "https://api.timezonedb.com/v2.1/list-time-zone?key=" + apiKey2 + "&format=json&country=AU"
+console.log(queryURLTime)
 
-  $.ajax({
-    url: queryURLTime,
-    method: "GET"
-  }).then(function (response) {
-    console.log(response);
+$.ajax({
+  url: queryURLTime,
+  method: "GET"
+}).then(function (response) {
+  console.log(response);
+})
+
+
+
+// --------------------------------------------------------------//
+
+// Leon's code
+
+//click to display holday information
+$(document).on("click", ".holiday-name", function (event) {
+  console.log("clicked");
+  var holidayTypeShort = $(this).siblings(".tooltip").children(".type").text().split(' ')[0];
+  console.log(holidayTypeShort);
+  $(this).siblings(".tooltip").removeClass("hide");
+  $(this).siblings(".tooltip").addClass("show");
+  $(this).siblings(".tooltip").css({
+    "top": 30,
+    "left": 150
   })
-  // --------------------------------------------------------------//
+  $(this).siblings(".tooltip").show().delay(3000).hide(300);
 
+  //Add different back ground color base on holiday type
+  if (holidayTypeShort === "National") {
+    $(this).siblings(".tooltip").addClass("national");
+  }
+  else if (holidayTypeShort === "Local") {
+    $(this).siblings(".tooltip").addClass("local");
+  }
+  else if (holidayTypeShort === "Religious") {
+    $(this).siblings(".tooltip").addClass("religious");
+  }
+  else if (holidayTypeShort === "Observance") {
+    $(this).siblings(".tooltip").addClass("observance");
+  }
+  else {
+    $(this).siblings(".tooltip").css({
+      "background-color": "#009688",
+      "color": "white"
+    })
+  }
+})
 
+//End
