@@ -79,14 +79,14 @@
               <label>Select States</label>
               <div class="input-field">
                 <select class="select_all" id="stateSelector" name="stateSelector" required=true multiple>
-                  <option class="Australia/Sydney" value="Australian Capital Territory">ACT</option>
-                  <option class="Australia/Sydney" value="New South Wales">NSW</option>
-                  <option class="Australia/Darwin" value="Northern Teritory">NT</option>
-                  <option class="Australia/Brisbane" value="Queensland">QLD</option>
-                  <option class="Australia/Adelaide" value="South Australia">SA</option>
-                  <option class="Australia/Hobart" value="Tasmania">TAS</option>
-                  <option class="Australia/Melbourne" value="Victoria">VIC</option>
-                  <option class="Australia/Perth" value="Western Australia">WA</option>
+                  <option id="Canberra" class="Australia/Sydney" value="Australian Capital Territory">ACT</option>
+                  <option id="Sydney" class="Australia/Sydney" value="New South Wales">NSW</option>
+                  <option id="Darwin" class="Australia/Darwin" value="Northern Teritory">NT</option>
+                  <option id="Brisbane" class="Australia/Brisbane" value="Queensland">QLD</option>
+                  <option id="Adelaide" class="Australia/Adelaide" value="South Australia">SA</option>
+                  <option id="Hobart" class="Australia/Hobart" value="Tasmania">TAS</option>
+                  <option id="Melbourne" class="Australia/Melbourne" value="Victoria">VIC</option>
+                  <option id="Perth" class="Australia/Perth" value="Western Australia">WA</option>
                 </select><br />
               </div>
               <label>Holiday Type</label>
@@ -97,10 +97,7 @@
                   <option value="religious">Religious</option>
                   <option value="observance">Observance</option>
                 </select><br />
-              </div>
-
-
-
+                
               <div >
                 <label>Select Date</label>
                 <input id="dateSearch" type="month" class="datepicker" required=true>
@@ -136,10 +133,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- Linking moment js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.31/moment-timezone.js" integrity="sha512-+UTmqQPOeqpQhTNQCcxApVxsu4ysVazvtJPgwXsfMrw0Bj2hrahWGaLHtVxAtdLcCvedrhHn5pGhi7JCfilIUg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.31/moment-timezone-with-data.min.js" integrity="sha512-HZcf3uHWA+Y2P5KNv+F/xa87/flKVP92kUTe/KXjU8URPshczF1Dx+cL5bw0VBGhmqWAK0UbhcqxBbyiNtAnWQ==" crossorigin="anonymous"></script>
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <!-- Linking my script file -->
   <script src="ym-script.js"></script>
+
 
 
 
