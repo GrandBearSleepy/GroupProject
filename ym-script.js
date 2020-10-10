@@ -1,4 +1,8 @@
-// runs when document 
+
+var searchList = JSON.parse(localStorage.getItem("searchList")) || [];
+console.log(searchList);
+renderSearchList();
+// runs when document
 $(document).ready(function () {
   $('select').formSelect();
   $("select[required]").css({
@@ -37,7 +41,7 @@ var timeZoneLibrary = {
   "Tasmania": "Australia/Hobart",
   "Victoria": "Australia/Melbourne",
   "Western Australia": "Australia/Perth",
-    };
+};
 
 
 
@@ -54,23 +58,41 @@ function myTimer() {
 
 
 // When search button is clicked starts search function
-$("#submitButton").click(function(){
+$("#submitButton").click(function () {
   $.fn.startSearch();
 });
 
 // When item in the history is clicked updates search fields and starts search function
-$("#HISTORYORSOMETHING").click(function(){
+
+$(document).on("click", ".list", function (event) {
+  event.preventDefault();
+  var clickedId = parseInt($(this).data("id"));
+  console.log(clickedId);
+  console.log("clicked");
+  // for (var i = 0; i < searchList.length; i++) {
+  selectedStateEl = searchList[clickedId].state;
+  selectedDate = searchList[clickedId].date;
+  holidayType = searchList[clickedId].type;
+  selectedMonth = searchList[clickedId].month;
+  console.log(selectedStateEl);
+  console.log(selectedDate);
+  console.log(holidayType);
+  console.log(selectedMonth);
+  // }
+  // console.log(selectedMonth);
+
   $.fn.startSearch();
 });
 
+
 // When search submitted
-    $.fn.startSearch = function(){
+$.fn.startSearch = function () {
   var selectedStateEl = $('#stateSelector').find(":selected").map(function () { return this.value; }).get().join().split(",")
   var statesSortedEl = selectedStateEl.sort();
   var holidayType = $('#typeHoliday').find(":selected").map(function () { return this.value; }).get().join()
   var selectedDate = $(".datepicker").val().split("-");
   var selectedMonth = selectedDate[1].replace(/^0+/, '');
-console.log(statesSortedEl);
+  console.log(statesSortedEl);
   console.log(selectedMonth);
 
   // Empty all Divs
@@ -79,6 +101,30 @@ console.log(statesSortedEl);
 
   var queryURL = "https://calendarific.com/api/v2/holidays?api_key=" + apiKey1 + "&country=AU&year=" + selectedDate[0] + "&month=" + selectedMonth + "&type=" + holidayType;
   console.log(queryURL);
+
+  //Leon's code
+
+  //Store searched history to localstorage
+  var userSearch = {
+    "state": $('#stateSelector').find(":selected").map(function () { return this.text; }).get().join().split(","),
+    "date": selectedDate[0],
+    "month": selectedMonth,
+    "type": holidayType
+  }
+  searchList.unshift(userSearch);
+  searchList = searchList.slice(0, 5);
+  searchList = Array.from(new Set(searchList));
+  console.log(searchList);
+
+
+
+  localStorage.setItem("searchList", JSON.stringify(searchList));
+  renderSearchList()
+  //End
+
+
+
+
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -86,7 +132,7 @@ console.log(statesSortedEl);
     console.log(output);
     //for each state
     $.each(statesSortedEl, function (index, value) {
-      
+
       console.log("this " + index);
       console.log("value: " + value);
       var thisState = value;
@@ -101,7 +147,7 @@ console.log(statesSortedEl);
       var cardContent = "<div class=card-content>";
       var closeDivHCard = "</div></div>";
       var cardHorTemplate = cardHorizontal + cardStacked + cardContent + "<h4>" + value + "</h4>" + closeDivHCard + cardStackedIdEl
-      
+
 
       $("#resultsBox").append(cardHorTemplate);
       $('div.card').addClass("horizontal");
@@ -142,9 +188,7 @@ console.log(statesSortedEl);
           console.log("this is row 88 = All")
 
           $("#cardHor" + statevalue).append(cardTemplate);
-          //Leon
-          // $("#cardHor" + statevalue).append(holidayDec);
-          //End
+
         }
         else if (outputIsArray == true) {
           $.each(holidayStateEl, function (index, value) {
@@ -163,30 +207,30 @@ console.log(statesSortedEl);
 
     })
   })
-  };
+};
 
 
 
 // API call details for Timezones -------------------------------//
-function localDateandTime(thisState){
-  console.log("Row162: " +thisState);
-var apiKey2 = "G5S20ISM8DXY"
-var statesSelected = "" //this will need to be defined from what is selected on screen
-var queryURLTime = "https://api.timezonedb.com/v2.1/list-time-zone?key=" + apiKey2 + "&format=json&zone=Australia/Sydney"
+function localDateandTime(thisState) {
+  console.log("Row162: " + thisState);
+  var apiKey2 = "G5S20ISM8DXY"
+  var statesSelected = "" //this will need to be defined from what is selected on screen
+  var queryURLTime = "https://api.timezonedb.com/v2.1/list-time-zone?key=" + apiKey2 + "&format=json&zone=Australia/Sydney"
 
-console.log(queryURLTime)
+  console.log(queryURLTime)
 
-$.ajax({
-  url: queryURLTime,
-  method: "GET"
-}).then(function (response) {
-  console.log(response);
-  var time = (response.zones[0].timestamp * 1000);
-  var currentTime = moment.utc(time).format("hh:mm:ss a")
-  console.log(currentTime)
+  $.ajax({
+    url: queryURLTime,
+    method: "GET"
+  }).then(function (response) {
+    console.log(response);
+    var time = (response.zones[0].timestamp * 1000);
+    var currentTime = moment.utc(time).format("hh:mm:ss a")
+    console.log(currentTime)
 
 
-})
+  })
 };
 
 // API call details for Timezones -------------------------------//
@@ -241,5 +285,25 @@ $(document).on("click", ".holiday-name", function (event) {
     })
   }
 })
+
+
+
+function renderSearchList() {
+  // var serchDiv = $("div");
+  $("#search-list").empty();
+  var serchUl = $("ul");
+  // serchUl.attr("id", "search-list");
+
+  for (var i = 0; i < searchList.length; i++) {
+    var searchLi = $("<li>");
+    searchLi.addClass("list");
+    searchLi.attr("data-id", i)
+    searchLi.text("Searched state: " + searchList[i].state + ": " + "\n" + "Searched month: " + searchList[i].date + "," + searchList[i].month);
+    serchUl.append(searchLi);
+  }
+  // serchDiv.append(serchUl);
+  $("#search-list-area").append(serchUl);
+}
+
 
 //End
