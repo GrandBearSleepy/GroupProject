@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html>
 
 <head>
   <meta charset="UTF-8">
@@ -45,30 +45,31 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col s8" id="resultsBox">
-           <div class= "white" id= "userguide"></div>
+            <div class="white" id="userguide"></div>
             <div class="row">
-            <div class="col s12 m7">
-              <div class="card">
-                <div class="card-image">
-                  <img src="./Assets/PublicHoliday.jpg" alt="calendar holiday circled" style="width:425px;height:282px;"> 
-                  
-                </div>
-                <div class="card-content">
-                  <span class="card-title">Welcome!</span>
-                  <h4>I am a very simple card. I am good at containing small bits of information.</h4>
-                  <h4>I am convenient because I require little markup to use effectively.</h4>
-                </div>
-                <div class="card-action">
-                  <a href="#">This is a link</a>
+              <div class="col s12 m7">
+                <div class="card">
+                  <div class="card-image">
+                    <img src="./Assets/PublicHoliday.jpg" alt="calendar holiday circled"
+                      style="width:425px;height:282px;">
+
+                  </div>
+                  <div class="card-content">
+                    <span class="card-title">Welcome!</span>
+                    <h4>I am a very simple card. I am good at containing small bits of information.</h4>
+                    <h4>I am convenient because I require little markup to use effectively.</h4>
+                  </div>
+                  <div class="card-action">
+                    <a href="#">This is a link</a>
+                  </div>
                 </div>
               </div>
-            </div>
-             
 
-           </div>
+
+            </div>
           </div>
 
-          <div class="col s4">
+          <div class="col s4" id="search-area">
             <form>
 
               <!-- <label>Select Countries</label>
@@ -101,14 +102,18 @@
 
 
 
-              <div >
+              <div>
                 <label>Select Date</label>
                 <input id="dateSearch" type="month" class="datepicker" required=true>
               </div><br />
 
 
-              <button id="submitButton" class="btn waves-effect waves-light" type="button" name="action" >Search
+              <button id="submitButton" class="btn waves-effect waves-light" type="button" name="action">Search
               </button>
+
+              <div id="search-list-area">
+                <ul id="search-list"></ul>
+              </div>
             </form>
           </div>
 
@@ -125,11 +130,6 @@
     <div class="left">© 2020 UWA HEROES</div>
     </div>
   </footer>
-
-
-
-
-
 
 
   <!-- Linking JQuery -->
