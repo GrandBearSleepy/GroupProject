@@ -163,3 +163,8 @@ option {
 
 }
 
+#search-list{
+  text-decoration: underline;
+  color: #0392ce;
+  font-style: italic;
+}

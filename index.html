@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html >
+<html>
 
 <head>
   <meta charset="UTF-8">
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
- <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge" /> -->
+  <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge" /> -->
 
 
 
@@ -42,74 +42,102 @@
     <div class="container-fluid" id="masterContainer">
       <div class="container-fluid">
         <div class="row">
-          <div class="col s12 m7 l7 " id="resultsBox">
-           <div class= "white" id= "userguide"></div>
+          <div class="col s8" id="resultsBox">
+            <div class="white" id="userguide"></div>
             <div class="row">
-            <div class="col">
-              <div class="card">
-                <div class="card-image">
-                  <img class="responsive-img hide-on-med-and-down" src="./Assets/PublicHoliday.jpg" alt="calendar holiday circled" style="width:425px;height:282px;"> 
-                </div>
-                <div class="card-content blue">
-                  <span class="card-title">Welcome!</span>
-                  <h3 class="flow-text">Find out upcoming holidays so you can plan ahead and enjoy a day or two off.</h4>
-                  <h3 class="flow-text">Simply select the states you are interested in, holiday type whether national, local, religious or observed.  </h4>
-                </div>
-                
-              </div>
-            </div>
-             
+              <div class="col s12 m7">
+                <div class="card">
+                  <div class="card-image">
+                    <img src="./Assets/PublicHoliday.jpg" alt="calendar holiday circled"
+                      style="width:425px;height:282px;">
 
-           </div>
+                  </div>
+                  <div class="card-content">
+                    <span class="card-title">Welcome!</span>
+                    <h4>I am a very simple card. I am good at containing small bits of information.</h4>
+                    <h4>I am convenient because I require little markup to use effectively.</h4>
+                  </div>
+                  <div class="card-action">
+                    <a href="#">This is a link</a>
+                  </div>
+                </div>
+
+              </div>
+
+
+            </div>
           </div>
 
           <div class="col s12 m5">
-            <form >
+            <form>
+              <div class="col s4" id="search-area">
+                <form>
 
-              <!-- <label>Select Countries</label>
+                  <!-- <label>Select Countries</label>
               <div class="input-field">
                 <select id="countrySelector" required=true multiple>
                 </select><br />
               </div> -->
-              <label class="flow-text">Select States</label>
-              <div class="input-field">
+                  <label class="flow-text">Select States</label>
+                  <div class="input-field">
 
-                <select class="select_all" id="stateSelector" name="stateSelector" required=true multiple>
-                  <option class="Australia/Sydney" data-icon="/Assets/button_icons/act_icon.png" value="Australian Capital Territory">ACT</option>
-                  <option class="Australia/Sydney" data-icon="/Assets/button_icons/nsw_icon.png" value="New South Wales">NSW</option>
-                  <option class="Australia/Darwin" data-icon="/Assets/button_icons/nt_icon.png" value="Northern Teritory">NT</option>
-                  <option class="Australia/Brisbane" data-icon="/Assets/button_icons/qld_icon.png" value="Queensland">QLD</option>
-                  <option class="Australia/Adelaide" data-icon="/Assets/button_icons/sa_icon.png" value="South Australia">SA</option>
-                  <option class="Australia/Hobart" data-icon="/Assets/button_icons/tas_icon.png" value="Tasmania">TAS</option>
-                  <option class="Australia/Melbourne" data-icon="/Assets/button_icons/vic_icon.png" value="Victoria">VIC</option>
-                  <option class="Australia/Perth" data-icon="/Assets/button_icons/wa_icon.png" value="Western Australia">WA</option>
+                    <select class="select_all" id="stateSelector" name="stateSelector" required=true multiple>
+                      <option class="Australia/Sydney" data-icon="/Assets/button_icons/act_icon.png"
+                        value="Australian Capital Territory">ACT</option>
+                      <option class="Australia/Sydney" data-icon="/Assets/button_icons/nsw_icon.png"
+                        value="New South Wales">NSW</option>
+                      <option class="Australia/Darwin" data-icon="/Assets/button_icons/nt_icon.png"
+                        value="Northern Teritory">NT</option>
+                      <option class="Australia/Brisbane" data-icon="/Assets/button_icons/qld_icon.png"
+                        value="Queensland">QLD</option>
+                      <option class="Australia/Adelaide" data-icon="/Assets/button_icons/sa_icon.png"
+                        value="South Australia">SA</option>
+                      <option class="Australia/Hobart" data-icon="/Assets/button_icons/tas_icon.png" value="Tasmania">
+                        TAS</option>
+                      <option class="Australia/Melbourne" data-icon="/Assets/button_icons/vic_icon.png"
+                        value="Victoria">VIC</option>
+                      <option class="Australia/Perth" data-icon="/Assets/button_icons/wa_icon.png"
+                        value="Western Australia">WA</option>
 
-                </select><br />
+                    </select><br />
+                  </div>
+                  <label class="flow-text">Holiday Type</label>
+                  <div class="input-field">
+                    <select id="typeHoliday" required=true multiple>
+                      <option class="dropDown" value="national" data-icon="/Assets/button_icons/national_icon.png">
+                        National</option>
+                      <option value="local" data-icon="/Assets/button_icons/states_icon.jpg">Local</option>
+                      <option value="religious" data-icon="/Assets/button_icons/religion_icon.jpg">Religious</option>
+                      <option value="observance" data-icon="/Assets/button_icons/observance_icon.jpg">Observance
+                      </option>
+                    </select><br />
+                  </div>
+
+
+
+                  <div>
+                    <label class="flow-text">Select Date</label>
+                    <input id="dateSearch" type="month" class="datepicker" required=true>
+                  </div><br />
+                  <button id="submitButton" class="btn waves-effect waves-light blue" type="button" name="action">Search
+                    <div>
+                      <label>Select Date</label>
+                      <input id="dateSearch" type="month" class="datepicker" required=true>
+                    </div><br />
+
+
+                    <button id="submitButton" class="btn waves-effect waves-light" type="button" name="action">Search
+                    </button>
+
+                    <div id="search-list-area">
+                      <ul id="search-list"></ul>
+                    </div>
+                </form>
               </div>
-              <label class="flow-text">Holiday Type</label>
-              <div class="input-field">
-                <select id="typeHoliday" required=true multiple>
-                  <option class="dropDown" value="national" data-icon="/Assets/button_icons/national_icon.png" >National</option>
-                  <option value="local" data-icon="/Assets/button_icons/states_icon.jpg">Local</option>
-                  <option value="religious" data-icon="/Assets/button_icons/religion_icon.jpg">Religious</option>
-                  <option value="observance" data-icon="/Assets/button_icons/observance_icon.jpg">Observance</option>
-                </select><br />
-              </div>
 
-
-
-              <div >
-                <label class="flow-text">Select Date</label>
-                <input id="dateSearch" type="month" class="datepicker" required=true>
-              </div><br/>
-              <button id="submitButton" class="btn waves-effect waves-light blue" type="button" name="action" >Search
-              </button>
-            </form>
           </div>
-
         </div>
       </div>
-    </div>
 
   </main>
 
@@ -119,11 +147,6 @@
     <div class="left">© 2020 UWA HEROES</div>
     </div>
   </footer>
-
-
-
-
-
 
 
   <!-- Linking JQuery -->
