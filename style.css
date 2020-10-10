@@ -23,7 +23,7 @@ form {
 }
 
 #dateSearch {
-  width: 150px;
+  width: 160px;
 }
 
 /* nav bar main heading */
@@ -67,7 +67,6 @@ p {
 /* Drop down text label style */
 label {
   color: #2196f3;
-  font-size: 2.0vw ;
 }
 
 option {
