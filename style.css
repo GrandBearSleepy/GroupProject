@@ -123,5 +123,43 @@ option {
     text-transform: uppercase;
     font-size: 2rem;
     margin-top: 55px;
+  }
+.show{
+  	display: block;
+}
+.hide{
+  display: none;
+}
+  .tooltip{
+	position:absolute;
+  border:1px solid #333;
+  /* display: none; */
+	padding:25px;
+  width: 400px;
+	line-height: 1.5rem;
+  border-radius: 5px;
+  z-index: 9999;
+}
+.card-content{
+  position: relative;
+}
+
+.national{
+	background-color: #d33a2c;
+	color: white;
+}
+.local{
+	background-color: #0392ce;
+	color: white;
+}
+.religious{
+	background-color: royalblue;
+	color: white;
+
+}
+.observance{
+	background-color: orangered;
+	color: white;
+
 }
 
