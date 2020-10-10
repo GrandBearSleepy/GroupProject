@@ -12,14 +12,15 @@ body {
 main {
     flex: 1 0 auto;
     background-color: white;
+  
+    
 }
 
+/* select form styling - still needs adjustment on text size for mobile */
 form {
-    min-width: 160px ;
-/* border-style: solid;
-border-width: 5px; */
+    width: auto;
+    
 }
-
 
 #dateSearch {
   width: 150px;
@@ -27,21 +28,48 @@ border-width: 5px; */
 
 /* nav bar main heading */
 nav .brand-logo {
-  font-size: 3.5vw;
+  font-size: 3.0vw;
 }
   
 #masterContainer {
-    margin: 40px 60px 40px 10px;
+    margin: 40px 0px 40px 10px;
 }
 
 #currentDandT {
 padding-right: 20px;
 }
 
+h3 {
+  color: white;;
+}
 
 h4 {
+  color: white;
   font-weight: bold;  
-  font-size: 2vw;
+  font-size: 25px;
+}
+
+p {
+  font-size: 15px;
+}
+
+/* contains returned holiday information */
+.card-content {
+  background-color: #2196f3;
+  border-style: solid;
+  border-width: 5px;
+  border-color: white;
+}
+
+/* Drop down text label style */
+label {
+  color: #2196f3;
+  font-size: 2.0vw ;
+}
+
+option {
+  font-size: xx-small;
+  color: aqua;
 }
 
 /* input field text styling - need tweaking for mobile view*/
@@ -50,16 +78,21 @@ h4 {
   color:black;
 }
 
+/* styling for dropdown - currently not able to target these for changes*/
+.select-dropdown{
+  color: rgb(168, 166, 166);
+}
+
 #resultsBox {
-  background-color: aqua;
+  /* background-color: #2196f3; */
 }
 
 .picker__frame {
     margin: 0 auto;
     max-width: 565px;
-  }
+}
   
-  .picker__date-display {
+.picker__date-display {
     text-align: center;
     background-color: #26a69a;
     color: #fff;
@@ -68,30 +101,25 @@ h4 {
     float: left;
     width: 50%;
     height: 330PX;
-  }
+}
   
-  .picker__calendar-container {
+.picker__calendar-container {
     padding: 0 1rem;
     float: left;
     width: 50%;
-  }
+}
   
-  .picker__footer {
+.picker__footer {
     text-align: right;
     padding: 5px 10px;
     clear: both;
     width: 50%;
     float: right;
-  }
-  
-  .picker__month-display {
+}
+
+.picker__month-display {
     text-transform: uppercase;
     font-size: 2rem;
     margin-top: 55px;
-  }
+}
 
-
-/* returned results styling - created via js */
-  .card-content {
-    /* font-size: 3vw; */
-  }

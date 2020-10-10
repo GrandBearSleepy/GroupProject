@@ -40,23 +40,20 @@
   <main>
 
     <div class="container-fluid" id="masterContainer">
-
-
       <div class="container-fluid">
         <div class="row">
-          <div class="col s12 m7 l7" id="resultsBox">
+          <div class="col s12 m7 l7 " id="resultsBox">
            <div class= "white" id= "userguide"></div>
             <div class="row">
-            <div class="col s12 m7">
+            <div class="col">
               <div class="card">
                 <div class="card-image">
-                  <img class="responsive-img" src="./Assets/PublicHoliday.jpg" alt="calendar holiday circled" style="width:425px;height:282px;"> 
-                  
+                  <img class="responsive-img hide-on-med-and-down" src="./Assets/PublicHoliday.jpg" alt="calendar holiday circled" style="width:425px;height:282px;"> 
                 </div>
-                <div class="card-content">
+                <div class="card-content blue">
                   <span class="card-title">Welcome!</span>
-                  <h4>I am a very simple card. I am good at containing small bits of information.</h4>
-                  <h4>I am convenient because I require little markup to use effectively.</h4>
+                  <h3 class="flow-text">Find out upcoming holidays so you can plan ahead and enjoy a day or 2 off</h4>
+                  <h3 class="flow-text">Simply select the states you are interested in, holiday type whether national, local, religious or observerd.  </h4>
                 </div>
                 
               </div>
@@ -66,7 +63,7 @@
            </div>
           </div>
 
-          <div class="col s5">
+          <div class="col s12 m5">
             <form >
 
               <!-- <label>Select Countries</label>
@@ -90,7 +87,7 @@
               <label>Holiday Type</label>
               <div class="input-field">
                 <select id="typeHoliday" required=true multiple>
-                  <option value="national" data-icon="/Assets/button_icons/national_icon.png" >National</option>
+                  <option class="dropDown" value="national" data-icon="/Assets/button_icons/national_icon.png" >National</option>
                   <option value="local" data-icon="/Assets/button_icons/states_icon.jpg">Local</option>
                   <option value="religious" data-icon="/Assets/button_icons/religion_icon.jpg">Religious</option>
                   <option value="observance" data-icon="/Assets/button_icons/observance_icon.jpg">Observance</option>
@@ -102,9 +99,7 @@
               <div >
                 <label>Select Date</label>
                 <input id="dateSearch" type="month" class="datepicker" required=true>
-              </div><br />
-
-
+              </div><br/>
               <button id="submitButton" class="btn waves-effect waves-light blue" type="button" name="action" >Search
               </button>
             </form>
@@ -115,7 +110,6 @@
     </div>
 
   </main>
-
 
 
   <!-- Footer -->
