@@ -1,9 +1,5 @@
 // runs when document 
 $(document).ready(function () {
-
-
-
-
   $('select').formSelect();
   $("select[required]").css({
     display: "inline",
@@ -11,11 +7,6 @@ $(document).ready(function () {
     padding: 0,
     width: 0
   });
-  // $('#dateSearch').datepicker({ selectMonths: true,  } );
-
-  myTimer();
-  // countryList();
-  // holiday();
   $('select.select_all').siblings('ul').prepend('<li id=sm_select_all><span>Select All</span></li>');
   $('li#sm_select_all').on('click', function () {
     var jq_elem = $(this),
@@ -27,14 +18,26 @@ $(document).ready(function () {
       return $(this).find('input').prop('checked') != select_all;
     }).click();
   });
+  myTimer();
 });
 $('select.select_all').siblings('ul').prepend('<li id=sm_select_all><span>Select All</span></li>');
 
+// create variables
 var apiKey1 = "7d54d178cff682b4d8985e43a6b6c9055e8cef71";
 var searchTerm = "" //this will need to be defined as search criteria
 var holidayType = "National" //This will be selected based on drop down, need to determine who to include multiple
 var year = "2020"
 var states = "";
+var timeZoneLibrary = {
+  "Australian Capital Territory": "Australia/Sydney",
+  "New South Wales": "Australia/Sydney",
+  "Northern Teritory": "Australia/Darwin",
+  "Queensland": "Australia/Brisbane",
+  "South Australia": "Australia/Adelaide",
+  "Tasmania": "Australia/Hobart",
+  "Victoria": "Australia/Melbourne",
+  "Western Australia": "Australia/Perth",
+    };
 
 
 
@@ -50,24 +53,24 @@ function myTimer() {
 
 
 
+// When search button is clicked starts search function
+$("#submitButton").click(function(){
+  $.fn.startSearch();
+});
 
+// When item in the history is clicked updates search fields and starts search function
+$("#HISTORYORSOMETHING").click(function(){
+  $.fn.startSearch();
+});
 
 // When search submitted
-
-
-$("#submitButton").click(function () {
-
-
-
-  var selectedStateEl = $('#stateSelector').find(":selected").map(function () { return this.text; }).get().join().split(",")
+    $.fn.startSearch = function(){
+  var selectedStateEl = $('#stateSelector').find(":selected").map(function () { return this.value; }).get().join().split(",")
   var statesSortedEl = selectedStateEl.sort();
-  console.log(statesSortedEl);
-
   var holidayType = $('#typeHoliday').find(":selected").map(function () { return this.value; }).get().join()
   var selectedDate = $(".datepicker").val().split("-");
   var selectedMonth = selectedDate[1].replace(/^0+/, '');
-
-
+console.log(statesSortedEl);
   console.log(selectedMonth);
 
   // Empty all Divs
@@ -83,19 +86,22 @@ $("#submitButton").click(function () {
     console.log(output);
     //for each state
     $.each(statesSortedEl, function (index, value) {
-      console.log(value);
+      
+      console.log("this " + index);
+      console.log("value: " + value);
       var thisState = value;
+      localDateandTime(thisState);
       var statestripped = value.replace(/\s/g, '');
       console.log(statestripped);
       var cardHorId = "id=cardHor" + statestripped;
       var statevalue = statestripped;
       var cardHorizontal = "<div class=card>";
-
       var cardStacked = "<div class=card-stacked>";
       var cardStackedIdEl = "<div class=card-stacked " + cardHorId + ">";
       var cardContent = "<div class=card-content>";
       var closeDivHCard = "</div></div>";
       var cardHorTemplate = cardHorizontal + cardStacked + cardContent + "<h4>" + value + "</h4>" + closeDivHCard + cardStackedIdEl
+      
 
       $("#resultsBox").append(cardHorTemplate);
       $('div.card').addClass("horizontal");
@@ -108,7 +114,6 @@ $("#submitButton").click(function () {
 
       //For Each holiday returned
       $.each(output.response.holidays, function (index, value) {
-
 
         //Leon's code start
 
@@ -158,10 +163,13 @@ $("#submitButton").click(function () {
 
     })
   })
+  };
 
-});
+
 
 // API call details for Timezones -------------------------------//
+function localDateandTime(thisState){
+  console.log("Row162: " +thisState);
 var apiKey2 = "G5S20ISM8DXY"
 var statesSelected = "" //this will need to be defined from what is selected on screen
 var queryURLTime = "https://api.timezonedb.com/v2.1/list-time-zone?key=" + apiKey2 + "&format=json&zone=Australia/Sydney"
@@ -179,6 +187,7 @@ $.ajax({
 
 
 })
+};
 
 // API call details for Timezones -------------------------------//
 var apiKey2 = "G5S20ISM8DXY"
