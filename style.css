@@ -54,6 +54,10 @@ p {
   px;
 }
 
+.holiday-name{
+  color:white;
+}
+
 /* contains returned holiday information */
 .card-content {
   background-color: #2196f3;
