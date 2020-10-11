@@ -80,6 +80,7 @@ $.fn.startSearch = function () {
 
     localStorage.setItem("searchList", JSON.stringify(searchList));
     renderSearchList();
+    $("#resultsBox").empty();
   }
 
 
@@ -89,7 +90,7 @@ $.fn.startSearch = function () {
 
 
   // Empties all results from results box
-  $("#resultsBox").empty();
+
 
 
   // Ajax call to get all public holidays in Australia for user selected month and year
