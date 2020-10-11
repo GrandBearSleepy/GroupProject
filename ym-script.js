@@ -34,8 +34,6 @@ $(document).ready(function () {
 });
 
 
-
-
 // creates clock and appends current local time to the Nav Bar
 var myVar = setInterval(myTimer, 1000);
 function myTimer() {
@@ -85,6 +83,7 @@ $.fn.startSearch = function () {
   var selectedStateCity = [];
 
   var holidayType = $('#typeHoliday').find(":selected").map(function () { return this.value; }).get().join()
+  console.log(holidayType);
   var selectedDate = monthYearPicker.split("-");
   var selectedMonth = selectedDate[1].replace(/^0+/, '');
 
@@ -93,7 +92,24 @@ $.fn.startSearch = function () {
   $('#stateSelector').find(":selected").each(function () {
     selectedStateCity.push({ "state": this.value, "city": this.id, "code": this.text });
   });
+  var userSearch = {
+    "statestring": JSON.stringify($('#stateSelector').val()),
+    "state": $('#stateSelector').find(":selected").map(function () { return this.text; }).get().join(),
+    "date": selectedDate[0],
+    "month": selectedMonth,
+    "unix": $(".datepicker").val(),
+    "typestring": JSON.stringify($('#typeHoliday').val()),
+    "type": $('#typeHoliday').find(":selected").map(function () { return this.text; }).get().join()
+  }
+  searchList.unshift(userSearch);
+  searchList = searchList.slice(0, 5);
+  searchList = Array.from(new Set(searchList));
+  console.log(searchList);
 
+
+
+  localStorage.setItem("searchList", JSON.stringify(searchList));
+  renderSearchList();
   // Empties all results from results box
   $("#resultsBox").empty();
 
@@ -171,12 +187,12 @@ $.fn.startSearch = function () {
 
         //Generate holiday description div
         var holidayDec = this.description;
-        var holidayType = this.type[0];
+        var holidayTypeEl = this.type[0];
         var holDateFormatted = moment(this.date.iso).format("ddd D MMMM YYYY");
 
 
         console.log("date formatted: " + holDateFormatted)
-        var holidayInfo = "<div class='tooltip hide'>" + "<h5 class='type'>" + holidayType + "</h5>" + "<br/>" + "<p>" + holidayDec + "</p>" + "</div>";
+        var holidayInfo = "<div class='tooltip hide'>" + "<h5 class='type'>" + holidayTypeEl + "</h5>" + "<br/>" + "<p>" + holidayDec + "</p>" + "</div>";
 
         //End
 
@@ -217,8 +233,48 @@ $.fn.startSearch = function () {
 
     })
   })
+  $("#masterForm").get(0).reset()
+
 };
 
+
+var searchList = JSON.parse(localStorage.getItem("searchList")) || [];
+console.log(searchList);
+renderSearchList();
+
+$(document).on("click", ".list", function (event) {
+  event.preventDefault();
+
+  var clickedId = parseInt($(this).data("id"));
+
+  console.log(clickedId);
+  console.log("clicked");
+  var jsonstringEl = JSON.parse(searchList[clickedId].statestring)
+  console.log(jsonstringEl);
+
+  $('#typeHoliday').val(JSON.parse(searchList[clickedId].typestring)).change();
+  $(".datepicker").val(searchList[clickedId].unix).change();
+  $('#stateSelector').val(JSON.parse(searchList[clickedId].statestring)).change();
+
+
+
+  $.fn.startSearch();
+});
+
+function renderSearchList() {
+
+  $("#search-list").empty();
+  for (var i = 0; i < searchList.length; i++) {
+    var searchLi = $("<li id=" + i + ">");
+    searchLi.addClass("list");
+    searchLi.attr("data-id", i)
+    searchLi.text("Searched state: " + searchList[i].state + ": " + "\n" + "Searched month: " + searchList[i].date + "," + searchList[i].month);
+    $("#search-list").append(searchLi);
+
+  }
+
+
+}
 //Checks if card content is empty and adds note if true
 function checkIfEmpty(statevalue) {
   if ($("#cardHor" + statevalue).is(':empty')) {
@@ -275,14 +331,12 @@ function findCaptialCityWeather(thisCity, cardContentHID) {
     var windSpeedTodayKPH = Math.floor(windSpeedTodayMPS * 3600 / 1610.3 * 100) / 100 + " km/h";
     var uv = output.wind.speed;
     console.log("Temp: " + tempTodayCelsuis + " Description: " + wTodayDes + " Humidity: " + humidityToday + " Wind Speed (km/h): " + windSpeedTodayKPH + " UV: " + uv);
-    var todayPush = "<h4>TODAY</h4>" + wTodayIcon + "<h5>" + tempTodayCelsuis + "</h5></br><h6>" + wTodayDes + "</h6></br><p>Wind: " + windSpeedTodayKPH + "    |   Humidity: " + humidityToday + "</p>"
-
-    var classWModal = "waves-effect waves-light btn modal-trigger";
-
-    var weatherModal = "<a class=modal-trigger href=#modal" + thisCity + ">" + thisCity + " Weather" + "</a><div id=modal" + thisCity + " class=modal><div class=modal-content>" + todayPush + "</div></div>";
+    var todayPush = "<h4 id=weatherHeader>TODAY</h4>" + wTodayIcon + "<h5>" + tempTodayCelsuis + "</h5></br><h6>" + wTodayDes + "</h6></br><p>Wind: " + windSpeedTodayKPH + "    |   Humidity: " + humidityToday + "</p>"
+    var weatherModal = "<a class=modal-trigger href=#modal" + thisCity + ">" + thisCity + " Weather" + "</a><div id=modal" + thisCity + " class=modal><div class=modal-content>" + todayPush + "</div><div id=modalFooterC class=modal-footer><a id=modalFooterEl href=#! class=modal-close>Close</a></div></div>"
 
     $("#" + cardContentHID).append(weatherModal);
     $('.modal-trigger').addClass("waves-effect waves-light btn");
+    $('.modal-footer').addClass("btn");
     $('.modal').modal();
   })
 };
