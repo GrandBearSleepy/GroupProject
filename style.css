@@ -1,25 +1,22 @@
-html *
-{
-    font-family: "Comic Sans MS", cursive, sans-serif;
+html * {
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 main {
-    flex: 1 0 auto;
-    background-color: white;
-  
-    
+  margin: 40px;
+  flex: 1 0 auto;
+  background-color: white;
 }
 
 /* select form styling - still needs adjustment on text size for mobile */
 form {
-    width: auto;
-    
+  width: auto;
 }
 
 #dateSearch {
@@ -27,35 +24,36 @@ form {
 }
 
 /* nav bar main heading */
-nav .brand-logo {
-  font-size: 3.0vw;
-}
-  
-#masterContainer {
-    margin: 40px 0px 40px 10px;
+a.brand-logo {
+  font-size: 3vw;
 }
 
+#masterContainer {
+  margin: 40px 0px 40px 10px;
+}
+
+/* current date and time */
 #currentDandT {
-padding-right: 20px;
+  font-weight: bold;
+  padding-right: 20px;
 }
 
 h3 {
-  color: white;;
+  color: white;
 }
 
 h4 {
   color: white;
-  font-weight: bold;  
+  font-weight: bold;
   font-size: 25px;
 }
 
 p {
-  font-size: 12
-  px;
+  font-size: 12px;
 }
 
-.holiday-name{
-  color:white;
+.holiday-name {
+  color: white;
 }
 
 /* contains returned holiday information */
@@ -65,7 +63,7 @@ p {
   border-width: 2px;
   border-color: white;
   padding: 1px;
-  
+
 }
 
 /* Drop down text label style */
@@ -73,97 +71,92 @@ label {
   color: #2196f3;
 }
 
-option {
-  font-size: xx-small;
-  color: aqua;
-}
-
 /* input field text styling - need tweaking for mobile view*/
 .input-field label {
   font-size: 1vw;
-  color:black;
-}
-
-/* styling for dropdown - currently not able to target these for changes*/
-.select-dropdown{
-  color: rgb(168, 166, 166);
-}
-
-#resultsBox {
-  
+  color: black;
 }
 
 .picker__frame {
-    margin: 0 auto;
-    max-width: 565px;
+  margin: 0 auto;
+  max-width: 565px;
 }
-  
+
 .picker__date-display {
-    text-align: center;
-    background-color: #26a69a;
-    color: #fff;
-    padding-bottom: 15px;
-    font-weight: 300;
-    float: left;
-    width: 50%;
-    height: 330PX;
+  text-align: center;
+  background-color: #26a69a;
+  color: #fff;
+  padding-bottom: 15px;
+  font-weight: 300;
+  float: left;
+  width: 50%;
+  height: 330PX;
 }
-  
+
 .picker__calendar-container {
-    padding: 0 1rem;
-    float: left;
-    width: 50%;
+  padding: 0 1rem;
+  float: left;
+  width: 50%;
 }
-  
+
 .picker__footer {
-    text-align: right;
-    padding: 5px 10px;
-    clear: both;
-    width: 50%;
-    float: right;
+  text-align: right;
+  padding: 5px 10px;
+  clear: both;
+  width: 50%;
+  float: right;
 }
 
 .picker__month-display {
-    text-transform: uppercase;
-    font-size: 2rem;
-    margin-top: 55px;
-  }
-.show{
-  	display: block;
+  text-transform: uppercase;
+  font-size: 2rem;
+  margin-top: 55px;
 }
-.hide{
+
+.show {
+  display: block;
+}
+
+.hide {
   display: none;
 }
-  .tooltip{
-	position:absolute;
-  border:1px solid #333;
+
+.tooltip {
+  position: absolute;
+  border: 1px solid #333;
   /* display: none; */
-	padding:25px;
+  padding: 25px;
   width: 400px;
-	line-height: 1.5rem;
+  line-height: 1.5rem;
   border-radius: 5px;
   z-index: 9999;
 }
-.card-content{
+
+.card-content {
   position: relative;
 }
 
-.national{
-	background-color: #d33a2c;
-	color: white;
-}
-.local{
-	background-color: #0392ce;
-	color: white;
-}
-.religious{
-	background-color: royalblue;
-	color: white;
-
-}
-.observance{
-	background-color: orangered;
-	color: white;
-
+/* national holiday modal popup */
+.national {
+  background-color: #d33a2c;
+  color: white;
 }
 
+/* local holiday modal popup */
+.local {
+  background-color: #0392ce;
+  color: white;
+}
+
+/* religous holiday modal popup */
+.religious {
+  background-color: royalblue;
+  color: white;
+
+}
+
+/* observance holiday modal popup */
+.observance {
+  background-color: orangered;
+  color: white;
+}
