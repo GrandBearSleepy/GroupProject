@@ -96,7 +96,7 @@ option {
 .hide{
   display: none;
 }
-  .tooltip{
+.tooltip{
 	position:absolute;
   border:1px solid #333;
   display: none;
@@ -106,27 +106,28 @@ option {
   border-radius: 5px;
   z-index: 9999;
 }
+.tooltip>p{
+  font-size: medium;
+}
 .card-content{
   position: relative;
 }
 
 .national{
 	background-color: #d33a2c;
-	color: white;
+  color: white;
 }
 .local{
 	background-color: #0392ce;
-	color: white;
+  color: white;
 }
 .religious{
 	background-color: royalblue;
-	color: white;
-
+  color: white;
 }
 .observance{
 	background-color: orangered;
 	color: white;
-
 }
 
 

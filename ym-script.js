@@ -72,12 +72,12 @@ $(document).on("click", ".list", function (event) {
 $.fn.startSearch = function () {
   var selectedStateEl = $('#stateSelector').find(":selected").map(function () { return this.value; }).get().join().split(",")
   var statesSortedEl = selectedStateEl.sort();
-=======
 
-// When item in the history is clicked updates search fields and starts search function
 
-// Creates dashboard with returned results from click commands 
-$.fn.startSearch = function () {
+  // When item in the history is clicked updates search fields and starts search function
+
+  // Creates dashboard with returned results from click commands 
+
 
   // var newDateMYP = new Date ($(".datepicker").val()*1000);
   var monthYearPicker = moment.unix($(".datepicker").val()).format("YYYY-MM-DD");
@@ -105,11 +105,13 @@ $.fn.startSearch = function () {
 
   //Store searched history to localstorage
   var userSearch = {
-    "state": $('#stateSelector').find(":selected").map(function () { return this.text; }).get().join().split(","),
+    "state": $('#stateSelector').find(":selected").map(function () { return this.value; }).get().join().split(","),
     "date": selectedDate[0],
     "month": selectedMonth,
     "type": holidayType
   }
+  var test = $('#stateSelector').find(":selected").map(function () { return this.value; }).get().join().split(",");
+  console.log(test);
   searchList.unshift(userSearch);
   searchList = searchList.slice(0, 5);
   searchList = Array.from(new Set(searchList));
@@ -118,7 +120,7 @@ $.fn.startSearch = function () {
 
 
   localStorage.setItem("searchList", JSON.stringify(searchList));
-  renderSearchList()
+  renderSearchList();
   //End
 
 
@@ -217,6 +219,7 @@ $.fn.startSearch = function () {
 
     })
   })
+
 };
 
 //Checks if card content is empty and adds note if true
@@ -289,18 +292,20 @@ function findCaptialCityWeather(thisCity, cardContentHID) {
 
 // Leon's code
 
+
+
 //click to display holday information
-$(document).on("click", ".holiday-name", function (event) {
+$(document).on("mouseenter", ".holiday-name", function (event) {
   console.log("clicked");
   var holidayTypeShort = $(this).siblings(".tooltip").children(".type").text().split(' ')[0];
   console.log(holidayTypeShort);
   $(this).siblings(".tooltip").removeClass("hide");
-  $(this).siblings(".tooltip").addClass("show");
+  // $(this).siblings(".tooltip").addClass("show");
   $(this).siblings(".tooltip").css({
-    "top": 30,
-    "left": 150
+    "top": 0,
+    "left": 550
   })
-  $(this).siblings(".tooltip").show().delay(3000).hide(300);
+  $(this).siblings(".tooltip").show()
 
   //Add different back ground color base on holiday type
   if (holidayTypeShort === "National") {
@@ -322,14 +327,17 @@ $(document).on("click", ".holiday-name", function (event) {
     })
   }
 })
-
+$(document).on("mouseleave", ".holiday-name", function (event) {
+  // $(this).siblings(".tooltip").removie();
+  $(this).siblings(".tooltip").addClass("hide");
+})
 
 
 
 function renderSearchList() {
   // var serchDiv = $("div");
   $("#search-list").empty();
-  var serchUl = $("ul");
+  var serchUl = $("#search-list");
   // serchUl.attr("id", "search-list");
 
   for (var i = 0; i < searchList.length; i++) {
