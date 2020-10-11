@@ -64,7 +64,7 @@
           </div>
 
           <div class="col s12 m5">
-            <form id="masterForm" onsubmit="return false">
+            <form id="masterForm" onsubmit="resetform">
 
               
               <label class="flow-text" for="stateSelector">Select States</label>
@@ -100,6 +100,8 @@
               <button id="submitButton" class="btn waves-effect waves-light blue" type="submit" name="action" onclick="$.fn.startSearch()">Search
               </button>
             </form>
+            <div id="search-list-area">
+              <ul id="search-list"></ul>
           </div>
 
         </div>

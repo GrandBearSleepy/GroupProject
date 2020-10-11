@@ -59,14 +59,7 @@ a {
   font-size: medium;
 }
 /* contains returned holiday information */
-.card-content {
-  background-color: #2196f3;
-  border-style: solid;
-  border-width: 2px;
-  border-color: white;
-  padding: 1px;
-  
-}
+
 
 /* Drop down text label style */
 label {
@@ -85,7 +78,7 @@ option {
 } */
 
 /* styling for dropdown - currently not able to target these for changes*/
-.dropdown-content li>span, .dropdown-content label>span {
+.dropdown-content li>span, .dropdown-content label>span, #weatherHeader {
 
   color:rgb(95, 95, 95);
 } 
@@ -129,4 +122,22 @@ option {
 
 }
 
+.modal-trigger {
+  margin-top: 20px;
+  
+}
 
+.modal { width: 300px; }
+
+#modalFooterEl {
+  padding-right: 20px;
+}
+
+.card-content, #modalFooterC {
+  background-color: #2196f3;
+  border-style: solid;
+  border-width: 2px;
+  border-color: white;
+  padding: 1px;
+  
+}
