@@ -22,6 +22,7 @@ form {
     
 }
 
+
 #dateSearch {
   width: 160px;
 }
@@ -32,7 +33,7 @@ nav .brand-logo {
 }
   
 #masterContainer {
-    margin: 40px 0px 40px 10px;
+    margin: 40px 20px 40px 10px;
 }
 
 #currentDandT {
@@ -50,10 +51,13 @@ h4 {
 }
 
 p {
-  font-size: 12
-  px;
+  font-size: 12px;
 }
 
+a {
+  color: white;
+  font-size: medium;
+}
 /* contains returned holiday information */
 .card-content {
   background-color: #2196f3;
@@ -71,59 +75,21 @@ label {
 
 option {
   font-size: xx-small;
-  color: aqua;
+  /* color: aqua; */
 }
 
 /* input field text styling - need tweaking for mobile view*/
-.input-field label {
+/* .input-field label {
   font-size: 1vw;
   color:black;
-}
+} */
 
 /* styling for dropdown - currently not able to target these for changes*/
-.select-dropdown{
-  color: rgb(168, 166, 166);
-}
+.dropdown-content li>span, .dropdown-content label>span {
 
-#resultsBox {
-  
-}
+  color:rgb(95, 95, 95);
+} 
 
-.picker__frame {
-    margin: 0 auto;
-    max-width: 565px;
-}
-  
-.picker__date-display {
-    text-align: center;
-    background-color: #26a69a;
-    color: #fff;
-    padding-bottom: 15px;
-    font-weight: 300;
-    float: left;
-    width: 50%;
-    height: 330PX;
-}
-  
-.picker__calendar-container {
-    padding: 0 1rem;
-    float: left;
-    width: 50%;
-}
-  
-.picker__footer {
-    text-align: right;
-    padding: 5px 10px;
-    clear: both;
-    width: 50%;
-    float: right;
-}
-
-.picker__month-display {
-    text-transform: uppercase;
-    font-size: 2rem;
-    margin-top: 55px;
-  }
 .show{
   	display: block;
 }
@@ -133,7 +99,7 @@ option {
   .tooltip{
 	position:absolute;
   border:1px solid #333;
-  /* display: none; */
+  display: none;
 	padding:25px;
   width: 400px;
 	line-height: 1.5rem;
@@ -162,4 +128,5 @@ option {
 	color: white;
 
 }
+
 
