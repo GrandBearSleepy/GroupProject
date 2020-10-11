@@ -29,7 +29,7 @@
     <!-- Navigation Bar -->
     <nav>
       <div class="nav nav-wrapper blue">
-        <a href="#" class="brand-logo center">Public Holiday Checker</a>
+        <a href="#" class="brand-logo center flow-tex">Public Holiday Checker</a>
         <div id="currentDandT" class="right hide-on-med-and-down">
         </div>
       </div>
@@ -41,6 +41,7 @@
     <div class="container-fluid" id="masterContainer">
       <div class="container-fluid">
         <div class="row">
+
           <div class="col s12 m7 l7 " id="resultsBox">
            <div class= "white" id= "userguide"></div>
             <div class="row">
@@ -60,17 +61,14 @@
              
 
            </div>
+
           </div>
 
           <div class="col s12 m5">
             <form id="masterForm" onsubmit="resetform">
-
-              
-              <label class="flow-text" for="stateSelector">Select States</label>
+             <label class="flow-text" for="stateSelector">Select States</label>
               <div class="input-field">
-
                 <select class="select_all" id="stateSelector" name="stateSelector" required multiple>
-                  
                   <option id="Canberra" class="Australia/Sydney" data-icon="./Assets/button_icons/act_icon.png" value="Australian Capital Territory">ACT</option>
                   <option id="Sydney" class="Australia/Sydney" data-icon="./Assets/button_icons/nsw_icon.png" value="New South Wales">NSW</option>
                   <option id="Darwin" class="Australia/Darwin" data-icon="./Assets/button_icons/nt_icon.png" value="Northern Teritory">NT</option>
@@ -79,12 +77,11 @@
                   <option id="Hobart" class="Australia/Hobart" data-icon="./Assets/button_icons/tas_icon.png" value="Tasmania">TAS</option>
                   <option id="Melbourne" class="Australia/Melbourne" data-icon="./Assets/button_icons/vic_icon.png" value="Victoria">VIC</option>
                   <option id="Perth" class="Australia/Perth" data-icon="./Assets/button_icons/wa_icon.png" value="Western Australia">WA</option>
-
                 </select><br />
               </div>
               <label class="flow-text" for="typeHoliday">Holiday Type</label>
               <div class="input-field">
-                
+
                 <select id="typeHoliday" name="typeHoliday" required aria-required="true" multiple>
                                  <option class="dropDown" value="national" data-icon="./Assets/button_icons/national_icon.png" >National</option>
                   <option value="local" data-icon="./Assets/button_icons/states_icon.jpg">Local</option>
@@ -97,6 +94,7 @@
                 <input id="dateSearch" name="dateSearch" type="text" class="datepicker" value=" " required>
               </div><br/>
               <button id="submitButton" class="btn waves-effect waves-light blue" type="submit" name="action" onclick="$.fn.startSearch()">Search
+
               </button>
             </form>
             <div id="search-list-area">
