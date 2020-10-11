@@ -22,7 +22,6 @@ form {
     
 }
 
-
 #dateSearch {
   width: 160px;
 }
@@ -60,7 +59,6 @@ a {
 }
 /* contains returned holiday information */
 
-
 /* Drop down text label style */
 label {
   color: #2196f3;
@@ -84,18 +82,18 @@ option {
 } 
 
 .show{
-  	display: block;
+    display: block;
 }
 .hide{
   display: none;
 }
   .tooltip{
-	position:absolute;
+  position:absolute;
   border:1px solid #333;
   display: none;
-	padding:25px;
+  padding:25px;
   width: 400px;
-	line-height: 1.5rem;
+  line-height: 1.5rem;
   border-radius: 5px;
   z-index: 9999;
 }
@@ -104,21 +102,21 @@ option {
 }
 
 .national{
-	background-color: #d33a2c;
-	color: white;
+  background-color: #d33a2c;
+  color: white;
 }
 .local{
-	background-color: #0392ce;
-	color: white;
+  background-color: #0392ce;
+  color: white;
 }
 .religious{
-	background-color: royalblue;
-	color: white;
+  background-color: royalblue;
+  color: white;
 
 }
 .observance{
-	background-color: orangered;
-	color: white;
+  background-color: orangered;
+  color: white;
 
 }
 
@@ -133,7 +131,6 @@ option {
   padding-right: 20px;
 }
 
-
 .card-content, #modalFooterC {
   background-color: #2196f3;
   border-style: solid;
@@ -141,11 +138,4 @@ option {
   border-color: white;
   padding: 1px;
   
-
-#search-list{
-  text-decoration: underline;
-  color: #0392ce;
-  font-style: italic;
 }
-
-
