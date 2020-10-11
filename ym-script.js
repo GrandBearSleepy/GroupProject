@@ -1,9 +1,4 @@
-
-
-var searchList = JSON.parse(localStorage.getItem("searchList")) || [];
-console.log(searchList);
-renderSearchList();
-
+// runs when document loads 
 $(document).ready(function () {
 
   $('.datepicker').monthpicker();
@@ -28,11 +23,9 @@ $(document).ready(function () {
     }).click();
   });
 
-
   myTimer();
 
 });
-
 
 // creates clock and appends current local time to the Nav Bar
 var myVar = setInterval(myTimer, 1000);
@@ -41,38 +34,10 @@ function myTimer() {
   $("#currentDandT").html(t);
 };
 
-
-
 // When item in the history is clicked updates search fields and starts search function
-
-$(document).on("click", ".list", function (event) {
-  event.preventDefault();
-  var clickedId = parseInt($(this).data("id"));
-  console.log(clickedId);
-  console.log("clicked");
-  // for (var i = 0; i < searchList.length; i++) {
-  selectedStateEl = searchList[clickedId].state;
-  selectedDate = searchList[clickedId].date;
-  holidayType = searchList[clickedId].type;
-  selectedMonth = searchList[clickedId].month;
-  console.log(selectedStateEl);
-  console.log(selectedDate);
-  console.log(holidayType);
-  console.log(selectedMonth);
-  // }
-  // console.log(selectedMonth);
-
+$("#HISTORYORSOMETHING").click(function () {
   $.fn.startSearch();
 });
-
-
-// When search submitted
-$.fn.startSearch = function () {
-  var selectedStateEl = $('#stateSelector').find(":selected").map(function () { return this.value; }).get().join().split(",")
-  var statesSortedEl = selectedStateEl.sort();
-=======
-
-// When item in the history is clicked updates search fields and starts search function
 
 // Creates dashboard with returned results from click commands 
 $.fn.startSearch = function () {
@@ -81,12 +46,11 @@ $.fn.startSearch = function () {
   var monthYearPicker = moment.unix($(".datepicker").val()).format("YYYY-MM-DD");
   var apiKey1 = "5831336151323c413d8fb0aed13c83618c5f2c17";
   var selectedStateCity = [];
-
   var holidayType = $('#typeHoliday').find(":selected").map(function () { return this.value; }).get().join()
   console.log(holidayType);
   var selectedDate = monthYearPicker.split("-");
   var selectedMonth = selectedDate[1].replace(/^0+/, '');
-
+  var queryURL = "https://calendarific.com/api/v2/holidays?api_key=" + apiKey1 + "&country=AU&year=" + selectedDate[0] + "&month=" + selectedMonth + "&type=" + holidayType;
 
   //Creates object array for all selected States
   $('#stateSelector').find(":selected").each(function () {
@@ -107,47 +71,16 @@ $.fn.startSearch = function () {
   console.log(searchList);
 
 
-
   localStorage.setItem("searchList", JSON.stringify(searchList));
   renderSearchList();
   // Empties all results from results box
   $("#resultsBox").empty();
 
-
-  var queryURL = "https://calendarific.com/api/v2/holidays?api_key=" + apiKey1 + "&country=AU&year=" + selectedDate[0] + "&month=" + selectedMonth + "&type=" + holidayType;
-  console.log(queryURL);
-
-  //Leon's code
-
-  //Store searched history to localstorage
-  var userSearch = {
-    "state": $('#stateSelector').find(":selected").map(function () { return this.text; }).get().join().split(","),
-    "date": selectedDate[0],
-    "month": selectedMonth,
-    "type": holidayType
-  }
-  searchList.unshift(userSearch);
-  searchList = searchList.slice(0, 5);
-  searchList = Array.from(new Set(searchList));
-  console.log(searchList);
-
-
-
-  localStorage.setItem("searchList", JSON.stringify(searchList));
-  renderSearchList()
-  //End
-
-
-
-
-
   // Ajax call to get all public holidays in Australia for user selected month and year
-
   $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function (output) {
-
 
     //Create card for each State the user selected
     $.each(selectedStateCity, function (index, value) {
@@ -155,7 +88,6 @@ $.fn.startSearch = function () {
       var thisState = this.state;
       var thisCity = this.city
       var statestripped = thisState.replace(/\s/g, '');
-
       var cardHorId = "id=cardHor" + statestripped;
       var statevalue = statestripped;
       var cardHorizontal = "<div class=card>";
@@ -163,14 +95,11 @@ $.fn.startSearch = function () {
       var cardStackedIdEl = "<div class=card-stacked " + cardHorId + ">";
       var cardContent = "<div class=card-content>";
       var closeDivHCard = "</div></div>";
-
       var cardContentHID = "stateHeader" + statestripped;
       var cardContentHead = "<div class=card-content id=" + cardContentHID + ">";
       var clockDivId = statestripped + "Clock";
       var clockDiv = "<div id=" + clockDivId + "></div>"
       var cardHorTemplate = cardHorizontal + cardStacked + cardContentHead + "<h4>" + this.code + "</h4>" + clockDiv + closeDivHCard + cardStackedIdEl
-
-
 
       // Call functions to obtain weather and local time
       findCaptialCityWeather(thisCity, cardContentHID);
@@ -178,7 +107,6 @@ $.fn.startSearch = function () {
 
       $("#resultsBox").append(cardHorTemplate);
       $('div.card').addClass("horizontal");
-
 
       //Add details to each state with corresponding holidays;
       $.each(output.response.holidays, function (index, value) {
@@ -189,7 +117,6 @@ $.fn.startSearch = function () {
         var holidayDec = this.description;
         var holidayTypeEl = this.type[0];
         var holDateFormatted = moment(this.date.iso).format("ddd D MMMM YYYY");
-
 
         console.log("date formatted: " + holDateFormatted)
         var holidayInfo = "<div class='tooltip hide'>" + "<h5 class='type'>" + holidayTypeEl + "</h5>" + "<br/>" + "<p>" + holidayDec + "</p>" + "</div>";
@@ -204,12 +131,13 @@ $.fn.startSearch = function () {
         console.log(outputIsArray);
         console.log(holidayStateEl);
 
-
         if (holidayStateEl == "All") {
           console.log("this is row 88 = All")
 
           $("#cardHor" + statevalue).append(cardTemplate);
-
+          //Leon
+          // $("#cardHor" + statevalue).append(holidayDec);
+          //End
         }
         else if (outputIsArray == true) {
           $.each(holidayStateEl, function (index, value) {
@@ -217,7 +145,6 @@ $.fn.startSearch = function () {
               $("#cardHor" + statevalue).append(cardTemplate);
 
             }
-
 
 
             console.log(this);
@@ -230,13 +157,11 @@ $.fn.startSearch = function () {
 
       checkIfEmpty(statevalue);
 
-
     })
   })
   $("#masterForm").get(0).reset()
 
 };
-
 
 var searchList = JSON.parse(localStorage.getItem("searchList")) || [];
 console.log(searchList);
@@ -257,7 +182,6 @@ $(document).on("click", ".list", function (event) {
   $('#stateSelector').val(JSON.parse(searchList[clickedId].statestring)).change();
 
 
-
   $.fn.startSearch();
 });
 
@@ -273,7 +197,6 @@ function renderSearchList() {
 
   }
 
-
 }
 //Checks if card content is empty and adds note if true
 function checkIfEmpty(statevalue) {
@@ -285,7 +208,6 @@ function checkIfEmpty(statevalue) {
     console.log("***IT IS FULL***")
   }
 };
-
 
 //Create a ticking clock for each selected state and add to card content
 function createLocalClocks(thisState, clockDiv, clockDivId) {
@@ -307,7 +229,6 @@ function createLocalClocks(thisState, clockDiv, clockDivId) {
     $("#" + clockDivId).html(dtString);
 
   }
-
 };
 
 //Look up weather for selected States captial/s and appends modal to card
@@ -377,26 +298,4 @@ $(document).on("click", ".holiday-name", function (event) {
   }
 })
 
-
-
-
-function renderSearchList() {
-  // var serchDiv = $("div");
-  $("#search-list").empty();
-  var serchUl = $("ul");
-  // serchUl.attr("id", "search-list");
-
-  for (var i = 0; i < searchList.length; i++) {
-    var searchLi = $("<li>");
-    searchLi.addClass("list");
-    searchLi.attr("data-id", i)
-    searchLi.text("Searched state: " + searchList[i].state + ": " + "\n" + "Searched month: " + searchList[i].date + "," + searchList[i].month);
-    serchUl.append(searchLi);
-  }
-  // serchDiv.append(serchUl);
-  $("#search-list-area").append(serchUl);
-}
-
-
 //End
-
