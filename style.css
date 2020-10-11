@@ -9,7 +9,6 @@ body {
 }
 
 main {
-  margin: 40px;
   flex: 1 0 auto;
   background-color: white;
 }
@@ -63,9 +62,12 @@ p {
   border-width: 2px;
   border-color: white;
   padding: 1px;
-
 }
 
+img {
+  max-height: 550px;
+}
+ 
 /* Drop down text label style */
 label {
   color: #2196f3;
