@@ -18,6 +18,7 @@ form {
   width: auto;
 }
 
+
 #dateSearch {
   width: 160px;
 }
@@ -28,7 +29,9 @@ a.brand-logo {
 }
 
 #masterContainer {
-  margin: 40px 0px 40px 10px;
+
+    margin: 40px 20px 40px 10px;
+
 }
 
 /* current date and time */
@@ -49,6 +52,7 @@ h4 {
 
 p {
   font-size: 12px;
+
 }
 
 .holiday-name {
@@ -62,7 +66,15 @@ p {
   border-width: 2px;
   border-color: white;
   padding: 1px;
+
 }
+
+a {
+  color: white;
+  font-size: medium;
+
+}
+
 
 img {
   max-height: 550px;
@@ -73,61 +85,37 @@ label {
   color: #2196f3;
 }
 
+
+option {
+  font-size: xx-small;
+  /* color: aqua; */
+}
+
+
 /* input field text styling - need tweaking for mobile view*/
-.input-field label {
+/* .input-field label {
   font-size: 1vw;
   color: black;
 }
 
-.picker__frame {
-  margin: 0 auto;
-  max-width: 565px;
-}
 
-.picker__date-display {
-  text-align: center;
-  background-color: #26a69a;
-  color: #fff;
-  padding-bottom: 15px;
-  font-weight: 300;
-  float: left;
-  width: 50%;
-  height: 330PX;
-}
+/* styling for dropdown - currently not able to target these for changes*/
+.dropdown-content li>span, .dropdown-content label>span, #weatherHeader {
 
-.picker__calendar-container {
-  padding: 0 1rem;
-  float: left;
-  width: 50%;
-}
+  color:rgb(95, 95, 95);
+} 
 
-.picker__footer {
-  text-align: right;
-  padding: 5px 10px;
-  clear: both;
-  width: 50%;
-  float: right;
+.show{
+  	display: block;
 }
-
-.picker__month-display {
-  text-transform: uppercase;
-  font-size: 2rem;
-  margin-top: 55px;
-}
-
-.show {
-  display: block;
-}
-
-.hide {
+.hide{
   display: none;
 }
-
-.tooltip {
-  position: absolute;
-  border: 1px solid #333;
-  /* display: none; */
-  padding: 25px;
+  .tooltip{
+	position:absolute;
+  border:1px solid #333;
+  display: none;
+	padding:25px;
   width: 400px;
   line-height: 1.5rem;
   border-radius: 5px;
@@ -157,8 +145,38 @@ label {
 
 }
 
+
 /* observance holiday modal popup */
 .observance {
   background-color: orangered;
   color: white;
 }
+
+.modal-trigger {
+  margin-top: 20px;
+  
+}
+
+.modal { width: 300px; }
+
+#modalFooterEl {
+  padding-right: 20px;
+}
+
+
+.card-content, #modalFooterC {
+  background-color: #2196f3;
+  border-style: solid;
+  border-width: 2px;
+  border-color: white;
+  padding: 1px;
+  
+
+#search-list{
+  text-decoration: underline;
+  color: #0392ce;
+  font-style: italic;
+}
+
+
+

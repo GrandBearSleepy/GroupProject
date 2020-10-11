@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
   <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge" /> -->
 
+ 
 
 
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Compiled and minified CSS -->
+ 
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="./style.css" />
-
-
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="./style.css" />
 
   <title>Public Holiday Checker</title>
 </head>
@@ -42,12 +42,15 @@
     <div class="container-fluid" id="masterContainer">
       <div class="container-fluid">
         <div class="row">
+
           <div class="col s12 m7" id="resultsBox">
+
             <div class="white" id="userguide"></div>
             <div class="row">
               <div class="col">
                 <div class="card">
                   <div class="card-image">
+
                     <img class="responsive-img hide-on-small-only" src="./Assets/PublicHoliday.jpg" alt="calendar holiday circled">
                   </div>
                   <div class="card-content blue">
@@ -65,45 +68,47 @@
           </div>
 
           <div class="col s12 m5">
-            <form>
-              <label class="flow-text">Select States</label>
+            <form id="masterForm" onsubmit="resetform">
+             <label class="flow-text" for="stateSelector">Select States</label>
               <div class="input-field">
-                <select class="select_all" id="stateSelector" name="stateSelector" required=true multiple>
-                  <option class="Australia/Sydney" data-icon="/Assets/button_icons/act_icon.png" value="Australian Capital Territory">ACT</option>
-                  <option class="Australia/Sydney" data-icon="/Assets/button_icons/nsw_icon.png" value="New South Wales">NSW</option>
-                  <option class="Australia/Darwin" data-icon="/Assets/button_icons/nt_icon.png" value="Northern Teritory">NT</option>
-                  <option class="Australia/Brisbane" data-icon="/Assets/button_icons/qld_icon.png"value="Queensland">QLD</option>
-                  <option class="Australia/Adelaide" data-icon="/Assets/button_icons/sa_icon.png" value="South Australia">SA</option>
-                  <option class="Australia/Hobart" data-icon="/Assets/button_icons/tas_icon.png" value="Tasmania">TAS</option>
-                  <option class="Australia/Melbourne" data-icon="/Assets/button_icons/vic_icon.png" value="Victoria">VIC</option>
-                  <option class="Australia/Perth" data-icon="/Assets/button_icons/wa_icon.png" value="Western Australia">WA</option>
+                <select class="select_all" id="stateSelector" name="stateSelector" required multiple>
+                  <option id="Canberra" class="Australia/Sydney" data-icon="./Assets/button_icons/act_icon.png" value="Australian Capital Territory">ACT</option>
+                  <option id="Sydney" class="Australia/Sydney" data-icon="./Assets/button_icons/nsw_icon.png" value="New South Wales">NSW</option>
+                  <option id="Darwin" class="Australia/Darwin" data-icon="./Assets/button_icons/nt_icon.png" value="Northern Teritory">NT</option>
+                  <option id="Brisbane" class="Australia/Brisbane" data-icon="./Assets/button_icons/qld_icon.png" value="Queensland">QLD</option>
+                  <option id="Adelaide" class="Australia/Adelaide" data-icon="./Assets/button_icons/sa_icon.png" value="South Australia">SA</option>
+                  <option id="Hobart" class="Australia/Hobart" data-icon="./Assets/button_icons/tas_icon.png" value="Tasmania">TAS</option>
+                  <option id="Melbourne" class="Australia/Melbourne" data-icon="./Assets/button_icons/vic_icon.png" value="Victoria">VIC</option>
+                  <option id="Perth" class="Australia/Perth" data-icon="./Assets/button_icons/wa_icon.png" value="Western Australia">WA</option>
                 </select><br />
               </div>
-              <label class="flow-text">Holiday Type</label>
+              <label class="flow-text" for="typeHoliday">Holiday Type</label>
               <div class="input-field">
-                <select id="typeHoliday" required=true multiple>
-                  <option class="dropDown" value="national" data-icon="/Assets/button_icons/national_icon.png">National
-                  </option>
-                  <option value="local" data-icon="/Assets/button_icons/states_icon.jpg">Local</option>
-                  <option value="religious" data-icon="/Assets/button_icons/religion_icon.jpg">Religious</option>
-                  <option value="observance" data-icon="/Assets/button_icons/observance_icon.jpg">Observance</option>
+
+                <select id="typeHoliday" name="typeHoliday" required aria-required="true" multiple>
+                                 <option class="dropDown" value="national" data-icon="./Assets/button_icons/national_icon.png" >National</option>
+                  <option value="local" data-icon="./Assets/button_icons/states_icon.jpg">Local</option>
+                  <option value="religious" data-icon="./Assets/button_icons/religion_icon.jpg">Religious</option>
+                  <option value="observance" data-icon="./Assets/button_icons/observance_icon.jpg">Observance</option>
                 </select><br />
-              </div>
+                
+              <div >
+                <label class="flow-text" for="dateSearch">Select Month and Year</label>
+                <input id="dateSearch" name="dateSearch" type="text" class="datepicker" value=" " required>
+              </div><br/>
+              <button id="submitButton" class="btn waves-effect waves-light blue" type="submit" name="action" onclick="$.fn.startSearch()">Search
 
-
-
-              <div>
-                <label class="flow-text">Select Date</label>
-                <input id="dateSearch" type="month" class="datepicker" required=true>
-              </div><br />
-              <button id="submitButton" class="btn waves-effect waves-light blue" type="button" name="action">Search
               </button>
             </form>
+
+            <div id="search-list-area">
+              <ul id="search-list"></ul>
           </div>
 
+
+          </div>
         </div>
       </div>
-    </div>
 
   </main>
 
@@ -115,19 +120,19 @@
   </footer>
 
 
-
-
-
-
-
   <!-- Linking JQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./monthpicker.js"></script>
   <!-- Linking moment js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.31/moment-timezone.js" integrity="sha512-+UTmqQPOeqpQhTNQCcxApVxsu4ysVazvtJPgwXsfMrw0Bj2hrahWGaLHtVxAtdLcCvedrhHn5pGhi7JCfilIUg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.31/moment-timezone-with-data.min.js" integrity="sha512-HZcf3uHWA+Y2P5KNv+F/xa87/flKVP92kUTe/KXjU8URPshczF1Dx+cL5bw0VBGhmqWAK0UbhcqxBbyiNtAnWQ==" crossorigin="anonymous"></script>
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ 
   <!-- Linking my script file -->
   <script src="ym-script.js"></script>
+
 
 
 
