@@ -1,6 +1,6 @@
 # Public Holiday Checker
 
-## User Story
+## User Stories
 ```
 AS A busy professional who works across multiple states in Australia
 I WANT to see at a glance when holidays are being observed
