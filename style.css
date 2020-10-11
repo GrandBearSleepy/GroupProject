@@ -151,7 +151,9 @@ option {
   background-color: orangered;
   color: white;
 }
-
+li{
+  cursor: pointer;
+}
 .modal-trigger {
   margin-top: 20px;
 
