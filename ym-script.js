@@ -71,14 +71,17 @@ $.fn.startSearch = function () {
   }
   var test = $('#stateSelector').find(":selected").map(function () { return this.value; }).get().join().split(",");
   console.log(test);
-  searchList.unshift(userSearch);
-  searchList = searchList.slice(0, 5);
-  searchList = Array.from(new Set(searchList));
-  console.log(searchList);
+  if (userSearch.state !== "") {
+    searchList.unshift(userSearch);
+    searchList = searchList.slice(0, 5);
+    searchList = Array.from(new Set(searchList));
+    console.log(searchList);
 
 
-  localStorage.setItem("searchList", JSON.stringify(searchList));
-  renderSearchList();
+    localStorage.setItem("searchList", JSON.stringify(searchList));
+    renderSearchList();
+  }
+
 
 
 
