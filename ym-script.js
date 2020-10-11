@@ -39,8 +39,10 @@ $("#HISTORYORSOMETHING").click(function () {
   $.fn.startSearch();
 });
 
+
 // Creates dashboard with returned results from click commands 
 $.fn.startSearch = function () {
+
 
   // var newDateMYP = new Date ($(".datepicker").val()*1000);
   var monthYearPicker = moment.unix($(".datepicker").val()).format("YYYY-MM-DD");
@@ -57,6 +59,8 @@ $.fn.startSearch = function () {
     selectedStateCity.push({ "state": this.value, "city": this.id, "code": this.text });
   });
   var userSearch = {
+
+
     "statestring": JSON.stringify($('#stateSelector').val()),
     "state": $('#stateSelector').find(":selected").map(function () { return this.text; }).get().join(),
     "date": selectedDate[0],
@@ -65,6 +69,8 @@ $.fn.startSearch = function () {
     "typestring": JSON.stringify($('#typeHoliday').val()),
     "type": $('#typeHoliday').find(":selected").map(function () { return this.text; }).get().join()
   }
+  var test = $('#stateSelector').find(":selected").map(function () { return this.value; }).get().join().split(",");
+  console.log(test);
   searchList.unshift(userSearch);
   searchList = searchList.slice(0, 5);
   searchList = Array.from(new Set(searchList));
@@ -73,8 +79,15 @@ $.fn.startSearch = function () {
 
   localStorage.setItem("searchList", JSON.stringify(searchList));
   renderSearchList();
+
+
+
+
+
+
   // Empties all results from results box
   $("#resultsBox").empty();
+
 
   // Ajax call to get all public holidays in Australia for user selected month and year
   $.ajax({
@@ -159,7 +172,9 @@ $.fn.startSearch = function () {
 
     })
   })
+
   $("#masterForm").get(0).reset()
+
 
 };
 
@@ -264,18 +279,20 @@ function findCaptialCityWeather(thisCity, cardContentHID) {
 
 // Leon's code
 
+
+
 //click to display holday information
-$(document).on("click", ".holiday-name", function (event) {
+$(document).on("mouseenter", ".holiday-name", function (event) {
   console.log("clicked");
   var holidayTypeShort = $(this).siblings(".tooltip").children(".type").text().split(' ')[0];
   console.log(holidayTypeShort);
   $(this).siblings(".tooltip").removeClass("hide");
-  $(this).siblings(".tooltip").addClass("show");
+  // $(this).siblings(".tooltip").addClass("show");
   $(this).siblings(".tooltip").css({
-    "top": 30,
-    "left": 150
+    "top": 0,
+    "left": 550
   })
-  $(this).siblings(".tooltip").show().delay(3000).hide(300);
+  $(this).siblings(".tooltip").show()
 
   //Add different back ground color base on holiday type
   if (holidayTypeShort === "National") {
@@ -297,5 +314,13 @@ $(document).on("click", ".holiday-name", function (event) {
     })
   }
 })
+
+$(document).on("mouseleave", ".holiday-name", function (event) {
+  // $(this).siblings(".tooltip").removie();
+  $(this).siblings(".tooltip").addClass("hide");
+})
+
+
+
 
 //End
