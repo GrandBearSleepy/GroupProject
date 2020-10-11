@@ -1,13 +1,39 @@
 # Public Holiday Checker
 
-As a busy professional who works across multiple regions, 
-I need to see at a glance when holidays are being observed 
-so I can schedule events and activities that won't conflict.
+## User Story
+```
+AS A busy professional who works across multiple states in Australia
+I WANT to see at a glance when holidays are being observed
+SO THAT I can schedule events and meetings that won't conflict with non working days
+```
+```
+AS An traveller in Australia
+I WANT to know my destintationstates coming holidays and weather
+SO THAT I can plan my journey
+```
+```
+AS An interstate traveller
+I WANT to know the upcoming events and holidays in the different 
+states I plan to visit, as well as context behind them
+SO THAT I am culturally informed
+```
+## Technologies Used
+This was an interesting project to execute as it required the merging of multiple 
+concepts that we've learned to date.  We had to use client-side storage to persist
+data, the UI had to be polished & mobile responsive and we could not use alerts,
+confirms or prompts, instead we used modal.
 
-As a traveller, 
-I want to know my destination country's coming holidays or events and weather, 
-so I can plan my  journey.
+The 2 API's we used were:
+ * https://calendarific.com/
+ * https://openweathermap.org/
+ 
+The CSS framework we used was:
+ * https://materializecss.com/
 
-As a traveller 
-I want to know the upcoming events and holidays in the countries I plan to visit as well as context behind them 
-so I am culturally informed.
+## Team Members & Task Breakdown
+Team members & their allocated tasks for this project were as follows:
+ * Leon Li: 	    Modal & Local Storage
+ * Mark Pilmer: 	Styling & Responsiveness
+ * Rob Sonter: 	  HTML and coding
+ * Yvonne Mulligan:  API responses & Github	Project Management
+
