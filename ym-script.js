@@ -46,7 +46,7 @@ $.fn.startSearch = function () {
 
   // var newDateMYP = new Date ($(".datepicker").val()*1000);
   var monthYearPicker = moment.unix($(".datepicker").val()).format("YYYY-MM-DD");
-  var apiKey1 = "5831336151323c413d8fb0aed13c83618c5f2c17";
+  var apiKey1 = "5a27c7a2c679412852bb8bb1b5e1cf934a1e5af8";
   var selectedStateCity = [];
   var holidayType = $('#typeHoliday').find(":selected").map(function () { return this.value; }).get().join()
   console.log(holidayType);
@@ -243,7 +243,7 @@ function createLocalClocks(thisState, clockDiv, clockDivId) {
       "Western Australia": "Australia/Perth",
     };
     var selectedZoneName = timeZoneLibrary[thisState];
-    var time = moment().tz(selectedZoneName).format("DD MMM YY hh:mm a p");
+    var time = moment().tz(selectedZoneName).format("DD MMM YYYY hh:mm a");
     var dtString = time.toString();
     $("#" + clockDivId).html(dtString);
 
