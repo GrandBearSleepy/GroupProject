@@ -1,5 +1,7 @@
 # Public Holiday Checker
 
+#### Access App Here: https://grandbearsleepy.github.io/Public-Holiday-Checker/
+
 ## User Stories
 ```
 AS A busy professional who works across multiple states in Australia
@@ -41,3 +43,14 @@ Team members & their allocated tasks for this project were as follows:
  #### App - Home Screen
 ![App Home](Assets/Home-screen.jpg)
 
+ #### App - Search Criteria
+![App Search Criteria](Assets/Search Criteria.jpg)
+
+ #### App - Search Results
+![App Search](Assets/Search Results.jpg)
+
+ #### App - Modal - Holiday Description
+![Modal Holiday](Assets/Modal-1.jpg)
+
+ #### App - Current Weather
+![Weather Modal](Assets/Modal-2.jpg)
