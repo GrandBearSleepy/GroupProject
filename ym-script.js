@@ -243,7 +243,7 @@ function createLocalClocks(thisState, clockDiv, clockDivId) {
       "Western Australia": "Australia/Perth",
     };
     var selectedZoneName = timeZoneLibrary[thisState];
-    var time = moment().tz(selectedZoneName).format("DD MMM YY hh:mm");
+    var time = moment().tz(selectedZoneName).format("DD MMM YY hh:mm a p");
     var dtString = time.toString();
     $("#" + clockDivId).html(dtString);
 
