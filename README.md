@@ -44,10 +44,10 @@ Team members & their allocated tasks for this project were as follows:
 ![App Home](Assets/Home-screen.jpg)
 
  #### App - Search Criteria
-![App Search Criteria](Assets/Search Criteria.jpg)
+![App Search Criteria](Assets/Search_Criteria.jpg)
 
  #### App - Search Results
-![App Search](Assets/Search Results.jpg)
+![App Search](Assets/Search_Results.jpg)
 
  #### App - Modal - Holiday Description
 ![Modal Holiday](Assets/Modal-1.jpg)
