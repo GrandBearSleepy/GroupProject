@@ -80,6 +80,7 @@ $.fn.startSearch = function () {
 
     localStorage.setItem("searchList", JSON.stringify(searchList));
     renderSearchList();
+    $("#resultsBox").empty();
   }
 
 
