@@ -39,5 +39,5 @@ Team members & their allocated tasks for this project were as follows:
  
  ## App Screen Shots
  #### App - Home Screen
-![App Home](assets/Home-screen.jpg)
+![App Home](Assets/Home-screen.jpg)
 
