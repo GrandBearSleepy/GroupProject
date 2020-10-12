@@ -36,4 +36,8 @@ Team members & their allocated tasks for this project were as follows:
  * Mark Pilmer: 	Styling & Responsiveness
  * Rob Sonter: 	  HTML and coding
  * Yvonne Mulligan:  API responses & Github	Project Management
+ 
+ ## App Screen Shots
+ #### App - Home Screen
+![App Home](assets/Home-screen.jpg)
 
