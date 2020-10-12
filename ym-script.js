@@ -30,7 +30,7 @@ $(document).ready(function () {
 // creates clock and appends current local time to the Nav Bar
 var myVar = setInterval(myTimer, 1000);
 function myTimer() {
-  t = moment().format("LLLL");
+  t = moment().format("DD MMM YY hh:mm");
   $("#currentDandT").html(t);
 };
 
