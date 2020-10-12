@@ -1,0 +1,176 @@
+html * {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+  background-color: white;
+}
+
+/* select form styling - still needs adjustment on text size for mobile */
+form {
+  width: auto;
+}
+
+#dateSearch {
+  width: 160px;
+}
+
+/* nav bar main heading */
+a.brand-logo {
+  font-size: 3vw;
+}
+
+#masterContainer {
+
+    margin: 40px 20px 40px 10px;
+
+}
+
+/* current date and time */
+#currentDandT {
+  font-weight: bold;
+  padding-right: 20px;
+}
+
+h3 {
+  color: white;
+}
+
+h4 {
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+p {
+  font-size: 12px;
+
+}
+
+.holiday-name {
+  color: white;
+}
+
+/* contains returned holiday information */
+.card-content {
+  background-color: #2196f3;
+  border-style: solid;
+  border-width: 2px;
+  border-color: white;
+  padding: 1px;
+
+}
+
+a {
+  color: white;
+  font-size: medium;
+
+}
+
+
+
+img {
+  max-height: 550px;
+}
+ 
+
+/* Drop down text label style */
+label {
+  color: #2196f3;
+}
+
+
+option {
+  font-size: xx-small;
+  /* color: aqua; */
+}
+
+
+/* input field text styling - need tweaking for mobile view*/
+/* .input-field label {
+  font-size: 1vw;
+  color: black;
+}
+
+
+/* styling for dropdown - currently not able to target these for changes*/
+.dropdown-content li>span, .dropdown-content label>span, #weatherHeader {
+
+  color:rgb(95, 95, 95);
+} 
+
+.show{
+    display: block;
+}
+.hide{
+  display: none;
+}
+
+  .tooltip{
+  position:absolute;
+  border:1px solid #333;
+  display: none;
+  padding:25px;
+  width: 400px;
+  line-height: 1.5rem;
+  border-radius: 5px;
+  z-index: 9999;
+}
+
+.tooltip>p{
+  font-size: medium;
+}
+.card-content{
+  position: relative;
+}
+
+.national{
+	background-color: #d33a2c;
+  color: white;
+}
+.local{
+	background-color: #0392ce;
+  color: white;
+}
+.religious{
+	background-color: royalblue;
+  color: white;
+
+}
+
+
+/* observance holiday modal popup */
+.observance {
+  background-color: orangered;
+  color: white;
+}
+li{
+  cursor: pointer;
+}
+.modal-trigger {
+  margin-top: 20px;
+
+}
+
+.modal { width: 300px; }
+
+#modalFooterEl {
+  padding-right: 20px;
+}
+
+.card-content, #modalFooterC {
+  background-color: #2196f3;
+  border-style: solid;
+  border-width: 2px;
+  border-color: white;
+  padding: 1px;
+  
+}
+

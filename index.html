@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+ <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge" /> -->
+
+
+
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./style.css" />
+
+  <title>Public Holiday Checker</title>
+</head>
+
+<body>
+
+  <header>
+    <!-- Navigation Bar -->
+    <nav>
+      <div class="nav nav-wrapper blue">
+        <a href="#" class="brand-logo center flow-tex">Public Holiday Checker</a>
+        <div id="currentDandT" class="right hide-on-med-and-down">
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="container-fluid" id="masterContainer">
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col s12 m7 l7 " id="resultsBox">
+           <div class= "white" id= "userguide"></div>
+            <div class="row">
+            <div class="col">
+              <div class="card">
+                <div class="card-image">
+                  <img class="responsive-img hide-on-med-and-down" src="./Assets/PublicHoliday.jpg" alt="calendar holiday circled" style="width:425px;height:282px;"> 
+                </div>
+                <div class="card-content blue">
+                  <span class="card-title">Welcome!</span>
+                  <h3 class="flow-text">Find out upcoming holidays so you can plan ahead and enjoy a day or two off.</h4>
+                  <h3 class="flow-text">Simply select the states you are interested in, holiday type whether national, local, religious or observed.  </h4>
+                </div>
+                
+              </div>
+            </div>
+             
+
+           </div>
+
+
+          </div>
+
+          <div class="col s12 m5">
+            <form id="masterForm" onsubmit="resetform">
+             <label class="flow-text" for="stateSelector">Select States</label>
+              <div class="input-field">
+                <select class="select_all" id="stateSelector" name="stateSelector" required multiple>
+                  <option id="Canberra" class="Australia/Sydney" data-icon="./Assets/button_icons/act_icon.png" value="Australian Capital Territory">ACT</option>
+                  <option id="Sydney" class="Australia/Sydney" data-icon="./Assets/button_icons/nsw_icon.png" value="New South Wales">NSW</option>
+                  <option id="Darwin" class="Australia/Darwin" data-icon="./Assets/button_icons/nt_icon.png" value="Northern Teritory">NT</option>
+                  <option id="Brisbane" class="Australia/Brisbane" data-icon="./Assets/button_icons/qld_icon.png" value="Queensland">QLD</option>
+                  <option id="Adelaide" class="Australia/Adelaide" data-icon="./Assets/button_icons/sa_icon.png" value="South Australia">SA</option>
+                  <option id="Hobart" class="Australia/Hobart" data-icon="./Assets/button_icons/tas_icon.png" value="Tasmania">TAS</option>
+                  <option id="Melbourne" class="Australia/Melbourne" data-icon="./Assets/button_icons/vic_icon.png" value="Victoria">VIC</option>
+                  <option id="Perth" class="Australia/Perth" data-icon="./Assets/button_icons/wa_icon.png" value="Western Australia">WA</option>
+                </select><br />
+              </div>
+              <label class="flow-text" for="typeHoliday">Holiday Type</label>
+              <div class="input-field">
+
+                <select id="typeHoliday" name="typeHoliday" required aria-required="true" multiple>
+                                 <option class="dropDown" value="national" data-icon="./Assets/button_icons/national_icon.png" >National</option>
+                  <option value="local" data-icon="./Assets/button_icons/states_icon.jpg">Local</option>
+                  <option value="religious" data-icon="./Assets/button_icons/religion_icon.jpg">Religious</option>
+                  <option value="observance" data-icon="./Assets/button_icons/observance_icon.jpg">Observance</option>
+                </select><br />
+                
+              <div >
+                <label class="flow-text" for="dateSearch">Select Month and Year</label>
+                <input id="dateSearch" name="dateSearch" type="text" class="datepicker" value=" " required>
+              </div><br/>
+              <button id="submitButton" class="btn waves-effect waves-light blue" type="submit" name="action" onclick="$.fn.startSearch()">Search
+
+              </button>
+            </form>
+            <div id="search-list-area">
+              <ul id="search-list"></ul>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="page-footer blue ">
+    <div class="left">© 2020 UWA HEROES</div>
+    </div>
+  </footer>
+
+
+
+
+
+
+  <!-- Linking JQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="./monthpicker.js"></script>
+  <!-- Linking moment js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.31/moment-timezone.js"
+    integrity="sha512-+UTmqQPOeqpQhTNQCcxApVxsu4ysVazvtJPgwXsfMrw0Bj2hrahWGaLHtVxAtdLcCvedrhHn5pGhi7JCfilIUg=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.31/moment-timezone-with-data.min.js"
+    integrity="sha512-HZcf3uHWA+Y2P5KNv+F/xa87/flKVP92kUTe/KXjU8URPshczF1Dx+cL5bw0VBGhmqWAK0UbhcqxBbyiNtAnWQ=="
+    crossorigin="anonymous"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- Linking my script file -->
+  <script src="ym-script.js"></script>
+
+
+
+
+</body>
+
+</html>
+
